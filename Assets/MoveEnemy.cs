@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class MoveEnemy : MonoBehaviour
+public class MoveEnemy : Character
 {
     // Start is called before the first frame update
     NavMeshAgent agent;
     GameObject fortress;
+    private float stopDistance = 7.5f;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -17,10 +19,6 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(fortress.transform.position);
-        if(Vector3.Distance(transform.position, fortress.transform.position) < 7.5f)
-        {
-            agent.velocity = Vector3.zero;
-        }
+        MoveToPoint(fortress.transform.position, stopDistance);
     }
 }
