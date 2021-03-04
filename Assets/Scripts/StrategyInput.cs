@@ -7,13 +7,16 @@ using UnityEngine.EventSystems;
 public class StrategyInput : MonoBehaviour
 {
     private LayerMask clickablesLayer = 8;
-    SelectionManager gameManager;
+    SelectionManager selectionManager;
     public RectTransform selectionBox;
     Vector2 boxStartPos;
 
+    float clickTimer;
+    float singleClickDuration = 0.3f;
+
     private void Start()
     {
-        gameManager = FindObjectOfType<SelectionManager>();
+        selectionManager = FindObjectOfType<SelectionManager>();
     }
 
     private void Update()
@@ -21,21 +24,32 @@ public class StrategyInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //HandleSingleLeftClick();
+            clickTimer = 0;
             boxStartPos = Input.mousePosition;
-            print(boxStartPos);
-            //selectionBox.gameObject.SetActive(true);
 
         }
 
         if(Input.GetMouseButton(0))
         {
-            UpdateSelectionBox(Input.mousePosition);
+            clickTimer += Time.deltaTime;
+            if(clickTimer > singleClickDuration)
+            {
+                UpdateSelectionBox(Input.mousePosition);
+            }
+            
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            ReleaseSelectionBox();
+            if(clickTimer > singleClickDuration)
+            {
+                ReleaseSelectionBox();
+            } else
+            {
+                HandleSingleLeftClick();
+
+            }
+
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -69,7 +83,7 @@ public class StrategyInput : MonoBehaviour
 
     private void UpdateSelection()
     {
-        gameManager.ClearSelection();
+        selectionManager.ClearSelection();
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
@@ -88,7 +102,7 @@ public class StrategyInput : MonoBehaviour
     private void ReleaseSelectionBox()
     {
         selectionBox.gameObject.SetActive(false);
-        gameManager.FilterSelection();
+        selectionManager.FilterSelection();
 
     }
 
@@ -100,16 +114,17 @@ public class StrategyInput : MonoBehaviour
         //print("clicked");
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            print(hit.collider.gameObject);
-            if (hit.collider.gameObject.tag == "Terrain")
-            {
-                gameManager.ClearSelection();
-            }
-            else
+            selectionManager.ClearSelection();
+            try
             {
                 var clickable = hit.collider.transform.parent.GetComponent<IClickable>();
                 clickable.Select();
+            } catch (NullReferenceException e)
+            {
+
             }
+                
+            
 
         }
     }

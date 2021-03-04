@@ -17,7 +17,6 @@ public class Character : ClickableObject
     public override void Start()
     {
         base.Start();
-        gameManager = FindObjectOfType<SelectionManager>();
     }
 
     public override void Update()
