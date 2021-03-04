@@ -65,11 +65,7 @@ public class StrategyInput : MonoBehaviour
 
     }
 
-    private void ReleaseSelectionBox()
-    {
-        selectionBox.gameObject.SetActive(false);
 
-    }
 
     private void UpdateSelection()
     {
@@ -77,8 +73,8 @@ public class StrategyInput : MonoBehaviour
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-
-        foreach (ClickableObject clickable in FindObjectsOfType<ClickableObject>())
+        var clickables = FindObjectsOfType<ClickableObject>();
+        foreach (ClickableObject clickable in clickables)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(clickable.transform.position);
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
@@ -89,7 +85,12 @@ public class StrategyInput : MonoBehaviour
         }
     }
 
+    private void ReleaseSelectionBox()
+    {
+        selectionBox.gameObject.SetActive(false);
+        gameManager.FilterSelection();
 
+    }
 
 
 

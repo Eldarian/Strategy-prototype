@@ -20,9 +20,9 @@ public class Character : ClickableObject
         gameManager = FindObjectOfType<SelectionManager>();
     }
 
-    public virtual void Update()
+    public override void Update()
     {
-
+        base.Update();
     }
 
     #endregion

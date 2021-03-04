@@ -24,6 +24,7 @@ public class ClickableObject : MonoBehaviour, IClickable
 
     public virtual void Deselect()
     {
+        
         if(selectionCircle != null)
         selectionCircle.enabled = false;
     }
