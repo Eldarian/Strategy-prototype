@@ -60,35 +60,36 @@ public class StrategyInput : MonoBehaviour
 
         selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
         selectionBox.anchoredPosition = boxStartPos + new Vector2(width / 2, height / 2);
+
+        UpdateSelection();
+
     }
 
     private void ReleaseSelectionBox()
     {
         selectionBox.gameObject.SetActive(false);
 
+    }
+
+    private void UpdateSelection()
+    {
+        gameManager.ClearSelection();
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
 
-        List<IClickable> selected = new List<IClickable>();
         foreach (ClickableObject clickable in FindObjectsOfType<ClickableObject>())
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(clickable.transform.position);
-            if(screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
+            if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
-                //selected.Add(clickable);
                 clickable.Select();
             }
-            
-        }
-        if (selected.Count == 0)
-        {
-            gameManager.ClearSelection();
+
         }
     }
 
 
-    
 
 
 

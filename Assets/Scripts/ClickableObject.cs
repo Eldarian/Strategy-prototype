@@ -32,7 +32,7 @@ public class ClickableObject : MonoBehaviour, IClickable
     {
         if (!gameManager.isSelected(this))
         {
-            gameManager.AddToSelected(new List<IClickable>() { this });
+            gameManager.AddToSelected(this);
             if (selectionCircle == null)
             {
                 selectionCircle = gameObject.DrawCircle(transform.GetChild(0).localScale.x, 0.5f);

@@ -25,11 +25,19 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    void AddToSelected(IClickable clickable)
+    public void AddToSelected(IClickable clickable)
     {
         //CheckSelectionTypes(clickable);
         selected.Add(clickable);
         print(selected.Count);
+    }
+
+    void RemoveFromSelected(IClickable clickable)
+    {
+        if(selected.Contains(clickable))
+        {
+            selected.Remove(clickable);
+        }
     }
 
     public bool isSelected(IClickable clickable)
@@ -45,6 +53,8 @@ public class SelectionManager : MonoBehaviour
         } 
         selected = new List<IClickable>();
     }
+
+
 
     
     
