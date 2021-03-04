@@ -26,7 +26,6 @@ public class MapClickHandler : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(ray, out hit);
             
-            //print(ray);
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -49,9 +48,9 @@ public class MapClickHandler : MonoBehaviour
 
     }
 
-    private void SendToPoint(Vector3 point)
+    /*private void SendToPoint(Vector3 point)
     {
-        List<Unit> selectedUnits = FindObjectsOfType<Unit>().Where(unit => unit.isSelected).ToList();
+        List<Character> selectedUnits = FindObjectsOfType<Character>().Where(unit => unit.isSelected).ToList();
         int length = selectedUnits.Count;
         int size = Mathf.RoundToInt(Mathf.Sqrt(length));
         float offset = -1 * (size-1) * 0.7f;
@@ -71,8 +70,9 @@ public class MapClickHandler : MonoBehaviour
         enumerator.MoveNext();
         selectedUnits.ForEach(unit =>
         {
-            unit.Move(enumerator.Current+point);
+            //unit.Move(enumerator.Current+point);
             enumerator.MoveNext();
         });
     }
+*/
 }

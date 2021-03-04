@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class Character : MonoBehaviour, ClickableObject
+public class Character : ClickableObject
 {
     #region Field Definitions
     public enum UnitState { Idle, Move, Chase, Attack }
 
-    GameManager gameManager;
     UnitState state;
     public NavMeshAgent agent;
     Transform objective;
 
-    LineRenderer selectionCircle;
 
 
-    public virtual void Start()
+    public override void Start()
     {
-        print("Parent Start");
-        gameManager = FindObjectOfType<GameManager>();
+        base.Start();
+        gameManager = FindObjectOfType<SelectionManager>();
     }
 
     public virtual void Update()
@@ -48,11 +46,21 @@ public class Character : MonoBehaviour, ClickableObject
         objective = _objective;
     }
 
-    public void OnClickEvent()
+    public override void Select()
+    {
+        base.Select();
+    }
+
+    public override void Deselect()
+    {
+        base.Deselect();
+    }
+
+    /*public void Select()
     {
         if (!gameManager.isSelected(this)) 
         {
-            gameManager.AddToSelected(this);
+            gameManager.AddToSelected(new List<IClickable>() { this });
             if(selectionCircle == null)
             {
                 selectionCircle = gameObject.DrawCircle(5f, 0.3f);
@@ -60,13 +68,12 @@ public class Character : MonoBehaviour, ClickableObject
             {
                 selectionCircle.enabled = true;
             }
-            
         } 
-        
     }
 
     public void Deselect()
     {
+        if(selectionCircle != null)
         selectionCircle.enabled = false;
-    }
+    }*/
 }
