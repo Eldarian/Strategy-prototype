@@ -9,5 +9,6 @@ public class UnitFactory : MonoBehaviour
         Character unit = Instantiate(prefab, startPosition, prefab.transform.rotation).GetComponent<Character>();
         return unit;
     }
+    
 
 }
