@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5953248230157315867}
   - component: {fileID: 3736152730725071339}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011371890898967439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 6341359501853133818}
@@ -104,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6341359501853133818}
   - component: {fileID: 8266083200802802896}
+  - component: {fileID: 79679461}
   m_Layer: 0
   m_Name: Fontain
   m_TagString: Untagged
@@ -138,3 +139,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d020614addb69f94390f2bef7993eddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionManager: {fileID: 0}
+  selectionCircle: {fileID: 0}
+--- !u!208 &79679461
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219740826710803763}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 5.5, y: 1, z: 5.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5

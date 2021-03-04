@@ -13,7 +13,6 @@ public class Enemy : Character
     {
         base.Start();
         print("Child Start");
-        agent = GetComponent<NavMeshAgent>();
         fortress = GameObject.FindGameObjectWithTag("Finish");
     }
 

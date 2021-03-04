@@ -11,17 +11,22 @@ public class Character : ClickableObject
     UnitState state;
     public NavMeshAgent agent;
     Transform objective;
-
+    public float stopDistance;
 
 
     public override void Start()
     {
         base.Start();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public override void Update()
     {
         base.Update();
+        if(objective != null)
+        {
+            MoveToObjective();
+        }
     }
 
     #endregion
@@ -31,13 +36,18 @@ public class Character : ClickableObject
 
     }
 
-    public void MoveToPoint(Vector3 point, float stopDistance)
+    public void MoveToPoint(Vector3 point, float _stopDistance)
     {
         agent.SetDestination(point);
-        if (Vector3.Distance(transform.position, point) < stopDistance)
+        if (Vector3.Distance(transform.position, point) < _stopDistance)
         {
             agent.velocity = Vector3.zero;
         }
+    }
+
+    public void MoveToObjective()
+    {
+        MoveToPoint(objective.position, stopDistance);
     }
 
     public void SetObjective(Transform _objective)

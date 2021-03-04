@@ -11,6 +11,8 @@ public class StrategyInput : MonoBehaviour
     public RectTransform selectionBox;
     Vector2 boxStartPos;
 
+    public GameObject objectivePrefab;
+
     float clickTimer;
     float singleClickDuration = 0.3f;
 
@@ -57,7 +59,23 @@ public class StrategyInput : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                print(hit.collider.gameObject);
+                
+                foreach (IClickable clickable in selectionManager.GetSelected())
+                {
+                    if(typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable)) {
+                        var ally = (Character) clickable;
+                        if (hit.collider.CompareTag("Terrain"))
+                        {
+                            ally.SetObjective(null);
+                            ally.MoveToPoint(hit.point, 5f);
+                        }
+                        else
+                        {
+                            ally.SetObjective(hit.collider.transform); 
+                        }
+                        
+                    }
+                }
 
             }
         }

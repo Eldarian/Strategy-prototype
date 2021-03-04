@@ -35,7 +35,7 @@ public class SelectionManager : MonoBehaviour
 
     public void FilterSelection()
     {
-        if(selected.Count > 1)
+        if (selected.Count > 1)
         {
             List<IClickable> deselected = new List<IClickable>();
             foreach (IClickable clickable in selected)
@@ -46,13 +46,13 @@ public class SelectionManager : MonoBehaviour
                     deselected.Add(clickable);
                 }
             }
-            if(deselected.Count > 0)
+            if (deselected.Count > 0)
             {
                 selected.RemoveAll(i => deselected.Contains(i));
             }
         }
 
-        
+
     }
 
     public bool isSelected(IClickable clickable)
@@ -62,7 +62,7 @@ public class SelectionManager : MonoBehaviour
 
     public void RemoveFromSelection(IClickable clickable)
     {
-        if(selected.Contains(clickable))
+        if (selected.Contains(clickable))
         {
             selected.Remove(clickable);
         }
@@ -73,38 +73,14 @@ public class SelectionManager : MonoBehaviour
         foreach (IClickable clickable in selected)
         {
             clickable.Deselect();
-        } 
+        }
         selected = new List<IClickable>();
     }
 
-
-
-    
-    
-    
-    
-   
-    
-    
-    void CheckSelectionTypes(IClickable clickable)
+    public List<IClickable> GetSelected()
     {
-        if(typeof(Building).IsInstanceOfType(clickable) || typeof(Enemy).IsInstanceOfType(clickable))
-        {
-            ClearSelection();
-            return;
-        }
-
-        if(typeof(Character).IsInstanceOfType(clickable))
-        {
-            if(selected.Count > 0)
-            {
-                if (typeof(Building).IsInstanceOfType(selected[0]) || typeof(Enemy).IsInstanceOfType(selected[0])) 
-                {
-                    ClearSelection();
-                }
-            }
-        }
-        //Buildings and characters can't be selected in one time
-        //Player can select multiple units or single building
+        return selected;
     }
+
 }
+    
