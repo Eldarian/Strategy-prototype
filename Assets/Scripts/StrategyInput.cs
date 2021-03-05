@@ -6,15 +6,17 @@ using UnityEngine.EventSystems;
 
 public class StrategyInput : MonoBehaviour
 {
-    private LayerMask clickablesLayer = 8;
     SelectionManager selectionManager;
     public RectTransform selectionBox;
     Vector2 boxStartPos;
 
-    public GameObject objectivePrefab;
+    public GameObject buildingprefab;
 
     float clickTimer;
     float singleClickDuration = 0.3f;
+
+    enum InputMode { Default, Build };
+    InputMode mode = InputMode.Default;
 
     private void Start()
     {
@@ -23,7 +25,30 @@ public class StrategyInput : MonoBehaviour
 
     private void Update()
     {
+        if (mode == InputMode.Default)
+        {
+            SelectUnits();
+            SendUnits();
+        }
+        if (mode == InputMode.Build)
+        {
+            clickTimer += Time.deltaTime;
+            if(clickTimer > singleClickDuration)
+            {
+                Build();
+            }
+            
 
+            if(Input.GetButtonDown("Cancel") || Input.GetMouseButtonDown(1))
+            {
+                EnableDefaultMode();
+            }
+        }
+    }
+
+    #region Unit Selection
+    private void SelectUnits()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             clickTimer = 0;
@@ -31,57 +56,31 @@ public class StrategyInput : MonoBehaviour
 
         }
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             clickTimer += Time.deltaTime;
-            if(clickTimer > singleClickDuration)
+            if (clickTimer > singleClickDuration)
             {
                 UpdateSelectionBox(Input.mousePosition);
             }
-            
+
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            if(clickTimer > singleClickDuration)
+            if (clickTimer > singleClickDuration)
             {
                 ReleaseSelectionBox();
-            } else
+            }
+            else
             {
                 HandleSingleLeftClick();
 
             }
 
         }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-            {
-                
-                foreach (IClickable clickable in selectionManager.GetSelected())
-                {
-                    if(typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable)) {
-                        var ally = (Character) clickable;
-                        if (hit.collider.CompareTag("Terrain"))
-                        {
-                            ally.SetObjective(null);
-                            ally.MoveToPoint(hit.point, 5f);
-                        }
-                        else
-                        {
-                            ally.SetObjective(hit.collider.transform); 
-                        }
-                        
-                    }
-                }
-
-            }
-        }
     }
 
-    // called when we are creating a selection box
     void UpdateSelectionBox(Vector2 curMousePos)
     {
         if (!selectionBox.gameObject.activeInHierarchy)
@@ -96,8 +95,6 @@ public class StrategyInput : MonoBehaviour
         UpdateSelection();
 
     }
-
-
 
     private void UpdateSelection()
     {
@@ -124,12 +121,9 @@ public class StrategyInput : MonoBehaviour
 
     }
 
-
-
     private void HandleSingleLeftClick()
     {
         RaycastHit hit;
-        //print("clicked");
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
             selectionManager.ClearSelection();
@@ -146,4 +140,67 @@ public class StrategyInput : MonoBehaviour
 
         }
     }
+
+    #endregion
+
+    #region Units Movement
+    private void SendUnits()
+    {
+        if (Input.GetMouseButtonUp(1))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            {
+
+                foreach (IClickable clickable in selectionManager.GetSelected())
+                {
+                    if (typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable))
+                    {
+                        var ally = (Character)clickable;
+                        if (hit.collider.CompareTag("Terrain"))
+                        {
+                            ally.SetObjective(null);
+                            ally.MoveToPoint(hit.point, 5f);
+                        }
+                        else
+                        {
+                            ally.SetObjective(hit.collider.transform);
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    #endregion
+
+    #region Buildings
+
+    private void Build()
+    {
+        if(Input.GetMouseButtonUp(0))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            {
+                Instantiate(buildingprefab, hit.point, Quaternion.identity);
+                EnableDefaultMode();
+            }
+        }
+    }
+
+    private void EnableDefaultMode()
+    {
+        mode = InputMode.Default;
+    }
+
+    public void EnableBuildMode(GameObject _buildingPrefab)
+    {
+        buildingprefab = _buildingPrefab;
+        mode = InputMode.Build;
+        clickTimer = 0;
+    }
+    #endregion
 }
