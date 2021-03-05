@@ -7,6 +7,7 @@ public class ClickableObject : MonoBehaviour, IClickable
 
     public SelectionManager selectionManager;
     public LineRenderer selectionCircle;
+    public GameObject properties;
 
     // Start is called before the first frame update
     public virtual void Start()

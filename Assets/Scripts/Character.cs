@@ -13,7 +13,6 @@ public class Character : ClickableObject
     Transform objective;
     public float stopDistance;
 
-
     public override void Start()
     {
         base.Start();

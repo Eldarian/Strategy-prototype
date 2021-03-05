@@ -253,6 +253,71 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 603567490}
     m_Modifications:
+    - target: {fileID: 1033961556, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_Name
+      value: Build WarBarracks Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 339457960}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnableBuildMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 566679121}
+    - target: {fileID: 1033961558, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 339457960}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnableBuildMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3779539168680506737, guid: ff89fca53a8610f46956392f838508c4,
+        type: 3}
+    - target: {fileID: 1570285025, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570285031, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
+      propertyPath: m_Name
+      value: Build ArcherBarracks Button
+      objectReference: {fileID: 0}
     - target: {fileID: 4192509987340941, guid: e4ecca07f17bc3b428eaafbe6cffd16c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -422,6 +487,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &339457960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2575470078314557477, guid: a4899c859796efb47924f32b168cd6a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2575470078876687973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e83c70bbc497bb44bd631902c2977d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &385090621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3578411652716982943, guid: 8c17a94d79577354d91bdb23dafde036,
@@ -465,6 +542,7 @@ MonoBehaviour:
   selectionManager: {fileID: 0}
   selectionCircle: {fileID: 0}
   agent: {fileID: 0}
+  stopDistance: 0
 --- !u!1 &503920519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8162106452896437408, guid: 10f2b6cd994cb2942ad56f18f90846ba,
