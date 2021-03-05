@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectableObject : MonoBehaviour
+public class Fortress : Building
 {
-    public bool isSelected = false;
+    
 }

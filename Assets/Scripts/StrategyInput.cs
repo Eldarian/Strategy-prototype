@@ -14,6 +14,8 @@ public class StrategyInput : MonoBehaviour
 
     float clickTimer;
     float singleClickDuration = 0.3f;
+    bool selecting = false;
+    ClickableObject primarySelected = null;
 
     enum InputMode { Default, Build };
     InputMode mode = InputMode.Default;
@@ -25,6 +27,14 @@ public class StrategyInput : MonoBehaviour
 
     private void Update()
     {
+        foreach (ClickableObject clickable in FindObjectsOfType<ClickableObject>())
+        {
+            clickable.properties.SetActive(false);
+        }
+        if (primarySelected != null)
+        {
+            primarySelected.properties.SetActive(true);
+        }
         if (mode == InputMode.Default)
         {
             SelectUnits();
@@ -53,6 +63,7 @@ public class StrategyInput : MonoBehaviour
         {
             clickTimer = 0;
             boxStartPos = Input.mousePosition;
+            selecting = true;
 
         }
 
@@ -75,8 +86,8 @@ public class StrategyInput : MonoBehaviour
             else
             {
                 HandleSingleLeftClick();
-
             }
+            selecting = false;
 
         }
     }

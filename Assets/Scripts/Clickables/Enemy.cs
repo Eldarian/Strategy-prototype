@@ -7,13 +7,13 @@ public class Enemy : Character
 {
     // Start is called before the first frame update
     GameObject fortress;
-    private float stopDistance = 7.5f;
 
     public override void Start()
     {
         base.Start();
         print("Child Start");
         fortress = GameObject.FindGameObjectWithTag("Finish");
+        stopDistance = 7.5f;
     }
 
     // Update is called once per frame
