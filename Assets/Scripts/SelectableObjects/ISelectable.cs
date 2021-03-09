@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IClickable 
+public interface ISelectable 
 {
     void Select();
     void Deselect();
-
 }

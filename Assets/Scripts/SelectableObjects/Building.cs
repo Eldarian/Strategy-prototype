@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : ClickableObject
+public class Building : SelectableObject
 {
     public override void Deselect()
     {

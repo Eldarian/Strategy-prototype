@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class Character : ClickableObject
+public class Character : SelectableObject
 {
     #region Field Definitions
     public enum UnitState { Idle, Move, Chase, Attack }

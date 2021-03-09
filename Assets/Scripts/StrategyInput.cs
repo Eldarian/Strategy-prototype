@@ -15,7 +15,7 @@ public class StrategyInput : MonoBehaviour
     float clickTimer;
     float singleClickDuration = 0.3f;
     bool selecting = false;
-    ClickableObject primarySelected = null;
+    SelectableObject primarySelected = null;
 
     enum InputMode { Default, Build };
     InputMode mode = InputMode.Default;
@@ -27,7 +27,7 @@ public class StrategyInput : MonoBehaviour
 
     private void Update()
     {
-        foreach (ClickableObject clickable in FindObjectsOfType<ClickableObject>())
+        foreach (SelectableObject clickable in FindObjectsOfType<SelectableObject>())
         {
             clickable.properties.SetActive(false);
         }
@@ -113,8 +113,8 @@ public class StrategyInput : MonoBehaviour
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-        var clickables = FindObjectsOfType<ClickableObject>();
-        foreach (ClickableObject clickable in clickables)
+        var clickables = FindObjectsOfType<SelectableObject>();
+        foreach (SelectableObject clickable in clickables)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(clickable.transform.position);
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
@@ -140,7 +140,7 @@ public class StrategyInput : MonoBehaviour
             selectionManager.ClearSelection();
             try
             {
-                var clickable = hit.collider.transform.parent.GetComponent<IClickable>();
+                var clickable = hit.collider.transform.parent.GetComponent<ISelectable>();
                 clickable.Select();
             } catch (NullReferenceException e)
             {
@@ -163,7 +163,7 @@ public class StrategyInput : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
 
-                foreach (IClickable clickable in selectionManager.GetSelected())
+                foreach (ISelectable clickable in selectionManager.GetSelected())
                 {
                     if (typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable))
                     {

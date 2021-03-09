@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickableObject : MonoBehaviour, IClickable
+public class SelectableObject : MonoBehaviour, ISelectable
 {
 
     public SelectionManager selectionManager;

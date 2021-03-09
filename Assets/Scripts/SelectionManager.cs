@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    List<IClickable> selected = new List<IClickable>();
+    List<ISelectable> selected = new List<ISelectable>();
 
-    public void AddToSelected(List<IClickable> multiple)
+    public void AddToSelected(List<ISelectable> multiple)
     {
         ClearSelection();
         if (multiple.Count > 1)
         {
-            foreach (IClickable clickable in multiple)
+            foreach (ISelectable clickable in multiple)
             {
                 if (typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable))
                 {
@@ -26,7 +26,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    public void AddToSelected(IClickable clickable)
+    public void AddToSelected(ISelectable clickable)
     {
         //CheckSelectionTypes(clickable);
         selected.Add(clickable);
@@ -37,8 +37,8 @@ public class SelectionManager : MonoBehaviour
     {
         if (selected.Count > 1)
         {
-            List<IClickable> deselected = new List<IClickable>();
-            foreach (IClickable clickable in selected)
+            List<ISelectable> deselected = new List<ISelectable>();
+            foreach (ISelectable clickable in selected)
             {
                 if (typeof(Building).IsInstanceOfType(clickable) || typeof(Enemy).IsInstanceOfType(clickable))
                 {
@@ -55,12 +55,12 @@ public class SelectionManager : MonoBehaviour
 
     }
 
-    public bool isSelected(IClickable clickable)
+    public bool isSelected(ISelectable clickable)
     {
         return selected.Contains(clickable);
     }
 
-    public void RemoveFromSelection(IClickable clickable)
+    public void RemoveFromSelection(ISelectable clickable)
     {
         if (selected.Contains(clickable))
         {
@@ -70,14 +70,14 @@ public class SelectionManager : MonoBehaviour
 
     public void ClearSelection()
     {
-        foreach (IClickable clickable in selected)
+        foreach (ISelectable clickable in selected)
         {
             clickable.Deselect();
         }
-        selected = new List<IClickable>();
+        selected = new List<ISelectable>();
     }
 
-    public List<IClickable> GetSelected()
+    public List<ISelectable> GetSelected()
     {
         return selected;
     }
