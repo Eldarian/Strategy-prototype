@@ -63,6 +63,7 @@ public class StrategyInput : MonoBehaviour
         {
             clickTimer = 0;
             boxStartPos = Input.mousePosition;
+            print(boxStartPos);
             selecting = true;
 
         }
@@ -99,8 +100,9 @@ public class StrategyInput : MonoBehaviour
 
         float width = curMousePos.x - boxStartPos.x;
         float height = curMousePos.y - boxStartPos.y;
-
+        Debug.LogFormat("width = {0}, height = {1}", width, height);
         selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
+        Debug.LogFormat("anchored Pos = {0}", selectionBox.anchoredPosition);
         selectionBox.anchoredPosition = boxStartPos + new Vector2(width / 2, height / 2);
 
         UpdateSelection();
@@ -113,13 +115,13 @@ public class StrategyInput : MonoBehaviour
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-        var clickables = FindObjectsOfType<SelectableObject>();
-        foreach (SelectableObject clickable in clickables)
+        var selectables = FindObjectsOfType<SelectableObject>();
+        foreach (SelectableObject selectable in selectables)
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(clickable.transform.position);
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(selectable.transform.position);
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
-                clickable.Select();
+                selectable.Select();
             }
 
         }

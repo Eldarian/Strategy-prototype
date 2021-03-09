@@ -56,5 +56,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e83c70bbc497bb44bd631902c2977d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionBox: {fileID: 752929099406226990, guid: 50c185d6b82a3fb498cb49dcb77589da,
-    type: 3}
+  selectionBox: {fileID: 0}
+  buildingprefab: {fileID: 0}

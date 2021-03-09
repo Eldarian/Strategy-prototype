@@ -30,7 +30,6 @@ public class SelectionManager : MonoBehaviour
     {
         //CheckSelectionTypes(clickable);
         selected.Add(clickable);
-        print(selected.Count);
     }
 
     public void FilterSelection()

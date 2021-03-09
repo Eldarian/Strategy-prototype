@@ -43,7 +43,6 @@ public class SelectableObject : MonoBehaviour, ISelectable
             {
                 selectionCircle.enabled = true;
             }
-            print(gameObject.name + "selected");
         }
     }
 }
