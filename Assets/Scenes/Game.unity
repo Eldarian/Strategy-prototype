@@ -1185,7 +1185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377374082}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 369.5, y: 0, z: 171.90002}
+  m_LocalPosition: {x: 181, y: 0, z: 171.90002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 963194228}
-  followTransform: {fileID: 233220036}
+  followTransform: {fileID: 0}
   speed: 1
 --- !u!1 &1478266931 stripped
 GameObject:
