@@ -6,11 +6,10 @@ using UnityEngine;
 public class Character : SelectableObject
 {
     #region Field Definitions
-    public enum UnitState { Idle, Move, Chase, Attack }
 
-    UnitState state;
+    protected Stats stats;
     public NavMeshAgent agent;
-    Transform objective;
+    public Transform objective;
     public float stopDistance;
 
     public override void Start()
@@ -46,12 +45,17 @@ public class Character : SelectableObject
 
     public void MoveToObjective()
     {
-        MoveToPoint(objective.position, stopDistance);
+        MoveToPoint(objective.position, stopDistance);  
     }
 
     public void SetObjective(Transform _objective)
     {
         objective = _objective;
+    }
+
+    protected Transform GetObjective()
+    {
+        return objective;
     }
 
     public override void Select()

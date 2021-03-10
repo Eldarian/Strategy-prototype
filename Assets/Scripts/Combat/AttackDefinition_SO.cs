@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackDefinition : ScriptableObject
+[CreateAssetMenu(fileName = "NewAttack", menuName = "Attack", order = 56)]
+public class AttackDefinition_SO : ScriptableObject
 {
-    float minDamage;
-    float maxDamage; 
+    public float minDamage;
+    public float maxDamage; 
 
     public Attack CreateAttack(Stats attackerStats)
     {

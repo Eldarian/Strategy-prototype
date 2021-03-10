@@ -516,6 +516,7 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   properties: {fileID: 6710227001294341403}
   agent: {fileID: 0}
+  objective: {fileID: 0}
   stopDistance: 0
 --- !u!4 &385090624 stripped
 Transform:
@@ -523,6 +524,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3578411652420499106}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &385090626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385090621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5938cb1ed44774792db42903339d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats_SO: {fileID: 11400000, guid: ec877724b754af542be427bc936f906e, type: 2}
 --- !u!1 &503920519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8162106452896437408, guid: 10f2b6cd994cb2942ad56f18f90846ba,
@@ -1070,6 +1084,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1010329232692162705}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1026511158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026511154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5165fb870ac1b6347b65dd6432cc5730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1201964812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3779539168680506737, guid: ff89fca53a8610f46956392f838508c4,
@@ -1235,6 +1261,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1478266933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478266931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5165fb870ac1b6347b65dd6432cc5730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1478266934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7301691741045068034, guid: 6668207c885386f408ca2fadf8d5d882,
@@ -1257,6 +1295,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1478266936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478266931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5938cb1ed44774792db42903339d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats_SO: {fileID: 0}
 --- !u!4 &1516469300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6341359501853133818, guid: 0c9f21bc94ceba747916ba060de532f0,
@@ -1602,6 +1653,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c185d6b82a3fb498cb49dcb77589da, type: 3}
+--- !u!1 &1789378489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6332115263907769116, guid: 8c17a94d79577354d91bdb23dafde036,
+    type: 3}
+  m_PrefabInstance: {fileID: 3578411652420499106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1789378494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789378489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5165fb870ac1b6347b65dd6432cc5730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4192509867873952 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4983677371060601756, guid: 6460fa0ee487631489aed9e45a959f60,
@@ -1928,6 +1997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234596864305658265, guid: 9b07a165e8c52944281df76d3c5c87c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b07a165e8c52944281df76d3c5c87c7, type: 3}
@@ -2540,7 +2614,7 @@ PrefabInstance:
     - target: {fileID: 3578411652716983011, guid: 8c17a94d79577354d91bdb23dafde036,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 206.6
+      value: 257.6
       objectReference: {fileID: 0}
     - target: {fileID: 3578411652716983011, guid: 8c17a94d79577354d91bdb23dafde036,
         type: 3}
@@ -2943,7 +3017,7 @@ PrefabInstance:
     - target: {fileID: 1928436195094456324, guid: 59047bdccc46c7c44a9950ad80a0feda,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 369.5
+      value: 247
       objectReference: {fileID: 0}
     - target: {fileID: 1928436195094456324, guid: 59047bdccc46c7c44a9950ad80a0feda,
         type: 3}
@@ -2995,21 +3069,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4223593309876464212, guid: 59047bdccc46c7c44a9950ad80a0feda,
-        type: 3}
-      propertyPath: m_Name
-      value: Selection Circle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223593309876464212, guid: 59047bdccc46c7c44a9950ad80a0feda,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
         type: 3}
       propertyPath: agent
       value: 
       objectReference: {fileID: 385090622}
+    - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
+        type: 3}
+      propertyPath: cooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
+        type: 3}
+      propertyPath: objective
+      value: 
+      objectReference: {fileID: 385090624}
     - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
         type: 3}
       propertyPath: properties
