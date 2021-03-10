@@ -8,32 +8,56 @@ public class Character : SelectableObject
     #region Field Definitions
 
     protected Stats stats;
-    public NavMeshAgent agent;
-    public Transform objective;
-    public float stopDistance;
+    protected NavMeshAgent agent;
+    [SerializeField] Transform objective;
+    [SerializeField] float stopDistance;
 
+    private float timer;
+    [SerializeField] float cooldown = 1f;
+    [SerializeField] AttackDefinition_SO definition;
+    protected Animator animator;
+    protected bool isAttackPerforming;
+    protected bool canAttack;
+    [SerializeField] float attackRange;
+
+    #endregion
+
+    #region Initializations
     public override void Start()
     {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        if(objective != null)
-        {
-            MoveToObjective();
-        }
+        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        stats = GetComponent<Stats>();
+        canAttack = true;
     }
 
     #endregion
+
+
+    
+    public override void Update()
+    {
+        base.Update();
+        PerformMovement();
+    }
+
+    
 
     public virtual void Heal()
     {
 
     }
 
+    #region Navigation
+
+    private void PerformMovement()
+    {
+        if (objective != null)
+        {
+            MoveToObjective();
+        }
+    }
     public void MoveToPoint(Vector3 point, float _stopDistance)
     {
         agent.SetDestination(point);
@@ -58,6 +82,9 @@ public class Character : SelectableObject
         return objective;
     }
 
+    #endregion
+
+    #region Selection
     public override void Select()
     {
         base.Select();
@@ -68,24 +95,60 @@ public class Character : SelectableObject
         base.Deselect();
     }
 
-    /*public void Select()
+    #endregion
+
+
+    #region Attack
+    private void OnTriggerEnter(Collider other)
     {
-        if (!gameManager.isSelected(this)) 
+        if (other.gameObject.GetComponent<IAttackable>() != null && isAttackPerforming)
         {
-            gameManager.AddToSelected(new List<IClickable>() { this });
-            if(selectionCircle == null)
-            {
-                selectionCircle = gameObject.DrawCircle(5f, 0.3f);
-            } else
-            {
-                selectionCircle.enabled = true;
-            }
-        } 
+            other.gameObject.GetComponent<IAttackable>().OnAttack(gameObject, definition.CreateAttack(stats));
+
+        }
     }
 
-    public void Deselect()
+    protected void MeleeAttack()
     {
-        if(selectionCircle != null)
-        selectionCircle.enabled = false;
-    }*/
+        if(objective != null && objective.GetComponent<IAttackable>() != null)
+        {
+            if(Vector3.Distance(transform.position, objective.position) < attackRange)
+            {
+                transform.LookAt(GetObjective());
+            }
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, transform.forward, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<IAttackable>() == objective.GetComponent<IAttackable>())
+                {
+
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                    {
+                        isAttackPerforming = false;
+                    }
+
+                    if (hit.distance <= attackRange && !isAttackPerforming && canAttack)
+                    {
+                        animator.SetTrigger("Attack");
+                        StartCoroutine(PerformAttack());
+                    }
+                }
+            }
+        }
+    }
+    protected IEnumerator PerformAttack()
+    {
+        animator.SetTrigger("Attack");
+        isAttackPerforming = true;
+        canAttack = false;
+        timer = 0;
+        while (timer < cooldown)
+        {
+            yield return null;
+            timer += Time.deltaTime;
+        }
+        canAttack = true;
+    }
+
+    #endregion
 }

@@ -5,9 +5,8 @@ using UnityEngine;
 public class SelectableObject : MonoBehaviour, ISelectable
 {
 
-    public SelectionManager selectionManager;
-    public LineRenderer selectionCircle;
-    public GameObject properties;
+    SelectionManager selectionManager;
+    LineRenderer selectionCircle;
 
     // Start is called before the first frame update
     public virtual void Start()

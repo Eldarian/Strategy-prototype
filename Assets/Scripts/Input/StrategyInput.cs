@@ -27,13 +27,13 @@ public class StrategyInput : MonoBehaviour
 
     private void Update()
     {
-        foreach (SelectableObject clickable in FindObjectsOfType<SelectableObject>())
+        foreach (SelectableObject selectable in FindObjectsOfType<SelectableObject>())
         {
-            clickable.properties.SetActive(false);
+            //clickable.properties.SetActive(false);
         }
         if (primarySelected != null)
         {
-            primarySelected.properties.SetActive(true);
+            //primarySelected.properties.SetActive(true);
         }
         if (mode == InputMode.Default)
         {
@@ -63,7 +63,6 @@ public class StrategyInput : MonoBehaviour
         {
             clickTimer = 0;
             boxStartPos = Input.mousePosition;
-            print(boxStartPos);
             selecting = true;
 
         }
@@ -177,7 +176,7 @@ public class StrategyInput : MonoBehaviour
                         }
                         else
                         {
-                            ally.SetObjective(hit.collider.transform);
+                            ally.SetObjective(hit.collider.transform.parent);
                         }
 
                     }
