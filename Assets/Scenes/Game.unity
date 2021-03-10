@@ -466,12 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e83c70bbc497bb44bd631902c2977d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &385090622 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 385090622, guid: 8c17a94d79577354d91bdb23dafde036,
-    type: 3}
-  m_PrefabInstance: {fileID: 3578411652420499106}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &385090624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3578411652716983011, guid: 8c17a94d79577354d91bdb23dafde036,
@@ -2511,6 +2505,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 723194150}
     m_Modifications:
+    - target: {fileID: 385090623, guid: 8c17a94d79577354d91bdb23dafde036, type: 3}
+      propertyPath: cooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 385090623, guid: 8c17a94d79577354d91bdb23dafde036, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 385090623, guid: 8c17a94d79577354d91bdb23dafde036, type: 3}
+      propertyPath: stopDistance
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3578411652716982943, guid: 8c17a94d79577354d91bdb23dafde036,
         type: 3}
       propertyPath: m_Name
@@ -2981,19 +2987,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
         type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 385090622}
-    - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
-        type: 3}
       propertyPath: objective
       value: 
       objectReference: {fileID: 385090624}
-    - target: {fileID: 6628310598986522114, guid: 59047bdccc46c7c44a9950ad80a0feda,
-        type: 3}
-      propertyPath: properties
-      value: 
-      objectReference: {fileID: 8170175921615332331}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59047bdccc46c7c44a9950ad80a0feda, type: 3}
 --- !u!1 &6710227001294341403 stripped
@@ -3226,12 +3222,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f2b6cd994cb2942ad56f18f90846ba, type: 3}
---- !u!1 &8170175921615332331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5975570099067542434, guid: 86084558cfcd31c45a901f2002f2e160,
-    type: 3}
-  m_PrefabInstance: {fileID: 2562327112132933705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8211996337853247977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4710093813452466541, guid: 8d175f99ba6844347838f2a7182608c8,
