@@ -40,21 +40,20 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         return damage;
     }
 
-    public void TakeDamage(int damageAmount)
+    public bool TakeDamage(int damageAmount)
     {
         health -= damageAmount;
 
         if(health <= 0)
         {
             health = 0;
-            HandleDeath();
         }
+        return health == 0;
     }
 
     private void HandleDeath()
     {
-        Debug.Log("Here is corpse!");
-        throw new NotImplementedException();
+        
     }
 
     public void HandleLevelUp()

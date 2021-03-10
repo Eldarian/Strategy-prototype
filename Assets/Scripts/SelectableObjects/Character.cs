@@ -101,10 +101,17 @@ public class Character : SelectableObject
     #region Attack
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<IAttackable>() != null && isAttackPerforming)
+        var attackedGameObject = other.gameObject;
+        if(attackedGameObject.name == "Body")
         {
-            other.gameObject.GetComponent<IAttackable>().OnAttack(gameObject, definition.CreateAttack(stats));
-
+            attackedGameObject = attackedGameObject.transform.parent.gameObject;
+        }
+        print(attackedGameObject.name);
+        if (attackedGameObject.GetComponent<IAttackable>() != null && isAttackPerforming)
+        {
+            attackedGameObject.GetComponent<IAttackable>().OnAttack(gameObject, definition.CreateAttack(stats));
+            print("Attack!");
+            isAttackPerforming = false;
         }
     }
 
@@ -122,10 +129,10 @@ public class Character : SelectableObject
                 if (hit.transform.gameObject.GetComponent<IAttackable>() == objective.GetComponent<IAttackable>())
                 {
 
-                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                    /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                     {
                         isAttackPerforming = false;
-                    }
+                    }*/
 
                     if (hit.distance <= attackRange && !isAttackPerforming && canAttack)
                     {

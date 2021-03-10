@@ -99,9 +99,7 @@ public class StrategyInput : MonoBehaviour
 
         float width = curMousePos.x - boxStartPos.x;
         float height = curMousePos.y - boxStartPos.y;
-        Debug.LogFormat("width = {0}, height = {1}", width, height);
         selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-        Debug.LogFormat("anchored Pos = {0}", selectionBox.anchoredPosition);
         selectionBox.anchoredPosition = boxStartPos + new Vector2(width / 2, height / 2);
 
         UpdateSelection();

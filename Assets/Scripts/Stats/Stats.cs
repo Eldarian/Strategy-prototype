@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,20 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        stats_SO.TakeDamage(damageAmount);
+        print(gameObject.name + " " + GetHealth() + " hp");
+        if(stats_SO.TakeDamage(damageAmount))
+        {
+            HandleDeath();
+        }
+    }
+
+    private void HandleDeath()
+    {
+        print("Try to die");
+        if(GetComponent<IDestructible>() != null)
+        {
+            GetComponent<IDestructible>().OnDestruction();
+        }
     }
 
     public void ApplyHealth(int healthAmount)

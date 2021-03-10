@@ -44,4 +44,9 @@ public class SelectableObject : MonoBehaviour, ISelectable
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        selectionManager.RemoveFromSelection(this);
+    }
 }
