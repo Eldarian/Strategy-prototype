@@ -14,14 +14,14 @@ public class UnitFactory : MonoBehaviour
         orders.Enqueue(new Order(prefab, startPosition, defaultObjective, delay));
     }
 
-    public void OrderUnitInstantly(GameObject prefab, Vector3 startPosition, Transform defaultObjective)
+    public Character GetUnitInstantly(GameObject prefab, Vector3 startPosition, Transform defaultObjective)
     {
-        SpawnUnit(new Order(prefab, startPosition, defaultObjective));
+        return SpawnUnit(new Order(prefab, startPosition, defaultObjective));
     }
 
-    private void SpawnUnit(Order order)
+    private Character SpawnUnit(Order order)
     {
-        Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation).GetComponent<Character>();
+        return Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation).GetComponent<Character>();
     }
     
     public float GetStatus()

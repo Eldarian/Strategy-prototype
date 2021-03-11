@@ -6,6 +6,8 @@ using System;
 
 public class Enemy : Character
 {
+    public int waveNumber;
+
     public override void Start()
     {
         base.Start();
