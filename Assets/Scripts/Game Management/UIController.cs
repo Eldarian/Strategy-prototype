@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     Text strength;
     Button takeUnit;
     Button buildWarBarracks;
-    Button buildArcherBarracks;
+    Button buildRangerBarracks;
     Button buildFountain;
 
     private void Start()
@@ -23,10 +23,9 @@ public class UIController : MonoBehaviour
         health = properties.transform.Find("Health Label").GetComponent<Text>();
         strength = properties.transform.Find("Strength Label").GetComponent<Text>();
         buildWarBarracks = properties.transform.Find("WarBarracks Button").GetComponent<Button>();
-        buildArcherBarracks = properties.transform.Find("ArcherBarracks Button").GetComponent<Button>();
+        buildRangerBarracks = properties.transform.Find("RangerBarracks Button").GetComponent<Button>();
         buildFountain = properties.transform.Find("Fountain Button").GetComponent<Button>();
         takeUnit = properties.transform.Find("Take Unit Button").GetComponent<Button>();
-
     }
 
     private void Update()
@@ -52,13 +51,13 @@ public class UIController : MonoBehaviour
         //Enable buttons in dependence of object type
         if(typeof(Fortress).IsInstanceOfType(selectable))
         {
-            buildArcherBarracks.gameObject.SetActive(true);
+            buildRangerBarracks.gameObject.SetActive(true);
             buildFountain.gameObject.SetActive(true);
             buildWarBarracks.gameObject.SetActive(true);
         } 
         else
         {
-            buildArcherBarracks.gameObject.SetActive(false);
+            buildRangerBarracks.gameObject.SetActive(false);
             buildFountain.gameObject.SetActive(false);
             buildWarBarracks.gameObject.SetActive(false);
         }

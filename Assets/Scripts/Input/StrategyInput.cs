@@ -85,6 +85,11 @@ public class StrategyInput : MonoBehaviour
         }
     }
 
+    bool PointerOverGUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
     void UpdateSelectionBox(Vector2 curMousePos)
     {
         if (!selectionBox.gameObject.activeInHierarchy)
@@ -126,6 +131,10 @@ public class StrategyInput : MonoBehaviour
 
     private void HandleSingleLeftClick()
     {
+        if(PointerOverGUI())
+        {
+            return;
+        }
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {

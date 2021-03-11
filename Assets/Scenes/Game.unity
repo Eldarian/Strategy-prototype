@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7688dc9f5beb98648b0fc0cd2bccbd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 60
+  spawnRate: 10
   prefab: {fileID: 2387395760316495224, guid: 59047bdccc46c7c44a9950ad80a0feda, type: 3}
   objective: {fileID: 0}
   waveSize: 5
@@ -2107,6 +2107,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 339457960}
+    - target: {fileID: 7773914278812444423, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_Name
+      value: RangerBarracks Button
+      objectReference: {fileID: 0}
     - target: {fileID: 7773914279346586294, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
