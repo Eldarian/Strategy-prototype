@@ -5,13 +5,13 @@ using UnityEngine;
 public class SelectableObject : MonoBehaviour, ISelectable
 {
 
-    SelectionManager selectionManager;
+    SelectionService selectionManager;
     LineRenderer selectionCircle;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        selectionManager = FindObjectOfType<SelectionManager>();
+        selectionManager = FindObjectOfType<SelectionService>();
     }
 
     // Update is called once per frame

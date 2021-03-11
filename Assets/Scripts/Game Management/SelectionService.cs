@@ -3,20 +3,19 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectionManager : MonoBehaviour
+public class SelectionService : MonoBehaviour
 {
     List<ISelectable> selected = new List<ISelectable>();
-
     public void AddToSelected(List<ISelectable> multiple)
     {
         ClearSelection();
         if (multiple.Count > 1)
         {
-            foreach (ISelectable clickable in multiple)
+            foreach (ISelectable selectable in multiple)
             {
-                if (typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable))
+                if (typeof(Character).IsInstanceOfType(selectable) && !typeof(Enemy).IsInstanceOfType(selectable))
                 {
-                    AddToSelected(clickable);
+                    AddToSelected(selectable);
                 }
             }
         }
@@ -26,10 +25,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    public void AddToSelected(ISelectable clickable)
+    public void AddToSelected(ISelectable selectable)
     {
-        //CheckSelectionTypes(clickable);
-        selected.Add(clickable);
+        selected.Add(selectable);
     }
 
     public void FilterSelection()
@@ -37,12 +35,12 @@ public class SelectionManager : MonoBehaviour
         if (selected.Count > 1)
         {
             List<ISelectable> deselected = new List<ISelectable>();
-            foreach (ISelectable clickable in selected)
+            foreach (ISelectable selectable in selected)
             {
-                if (typeof(Building).IsInstanceOfType(clickable) || typeof(Enemy).IsInstanceOfType(clickable))
+                if (typeof(Building).IsInstanceOfType(selectable) || typeof(Enemy).IsInstanceOfType(selectable))
                 {
-                    clickable.Deselect();
-                    deselected.Add(clickable);
+                    selectable.Deselect();
+                    deselected.Add(selectable);
                 }
             }
             if (deselected.Count > 0)
@@ -50,28 +48,26 @@ public class SelectionManager : MonoBehaviour
                 selected.RemoveAll(i => deselected.Contains(i));
             }
         }
-
-
     }
 
-    public bool isSelected(ISelectable clickable)
+    public bool isSelected(ISelectable selectable)
     {
-        return selected.Contains(clickable);
+        return selected.Contains(selectable);
     }
 
-    public void RemoveFromSelection(ISelectable clickable)
+    public void RemoveFromSelection(ISelectable selectable)
     {
-        if (selected.Contains(clickable))
+        if (selected.Contains(selectable))
         {
-            selected.Remove(clickable);
+            selected.Remove(selectable);
         }
     }
 
     public void ClearSelection()
     {
-        foreach (ISelectable clickable in selected)
+        foreach (ISelectable selectable in selected)
         {
-            clickable.Deselect();
+            selectable.Deselect();
         }
         selected = new List<ISelectable>();
     }

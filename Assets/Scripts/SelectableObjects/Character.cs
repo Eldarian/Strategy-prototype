@@ -110,7 +110,6 @@ public class Character : SelectableObject
         if (attackedGameObject.GetComponent<IAttackable>() != null && isAttackPerforming)
         {
             attackedGameObject.GetComponent<IAttackable>().OnAttack(gameObject, definition.CreateAttack(stats));
-            print("Attack!");
             isAttackPerforming = false;
         }
     }

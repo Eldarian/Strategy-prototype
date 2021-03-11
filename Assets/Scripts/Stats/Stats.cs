@@ -28,7 +28,6 @@ public class Stats : MonoBehaviour
 
     private void HandleDeath()
     {
-        print("Try to die");
         if(GetComponent<IDestructible>() != null)
         {
             GetComponent<IDestructible>().OnDestruction();

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class StrategyInput : MonoBehaviour
 {
-    SelectionManager selectionManager;
+    SelectionService selectionService;
     public RectTransform selectionBox;
     Vector2 boxStartPos;
 
@@ -14,27 +14,21 @@ public class StrategyInput : MonoBehaviour
 
     float clickTimer;
     float singleClickDuration = 0.3f;
-    bool selecting = false;
-    SelectableObject primarySelected = null;
-
     enum InputMode { Default, Build };
     InputMode mode = InputMode.Default;
 
     private void Start()
     {
-        selectionManager = FindObjectOfType<SelectionManager>();
+        selectionService = FindObjectOfType<SelectionService>();
     }
 
     private void Update()
     {
-        foreach (SelectableObject selectable in FindObjectsOfType<SelectableObject>())
-        {
-            //clickable.properties.SetActive(false);
-        }
-        if (primarySelected != null)
-        {
-            //primarySelected.properties.SetActive(true);
-        }
+        ManageInputModes();
+    }
+
+    private void ManageInputModes()
+    {
         if (mode == InputMode.Default)
         {
             SelectUnits();
@@ -43,13 +37,13 @@ public class StrategyInput : MonoBehaviour
         if (mode == InputMode.Build)
         {
             clickTimer += Time.deltaTime;
-            if(clickTimer > singleClickDuration)
+            if (clickTimer > singleClickDuration)
             {
                 Build();
             }
-            
 
-            if(Input.GetButtonDown("Cancel") || Input.GetMouseButtonDown(1))
+
+            if (Input.GetButtonDown("Cancel") || Input.GetMouseButtonDown(1))
             {
                 EnableDefaultMode();
             }
@@ -63,7 +57,6 @@ public class StrategyInput : MonoBehaviour
         {
             clickTimer = 0;
             boxStartPos = Input.mousePosition;
-            selecting = true;
 
         }
 
@@ -87,7 +80,6 @@ public class StrategyInput : MonoBehaviour
             {
                 HandleSingleLeftClick();
             }
-            selecting = false;
 
         }
     }
@@ -108,7 +100,7 @@ public class StrategyInput : MonoBehaviour
 
     private void UpdateSelection()
     {
-        selectionManager.ClearSelection();
+        selectionService.ClearSelection();
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
@@ -127,7 +119,7 @@ public class StrategyInput : MonoBehaviour
     private void ReleaseSelectionBox()
     {
         selectionBox.gameObject.SetActive(false);
-        selectionManager.FilterSelection();
+        selectionService.FilterSelection();
 
     }
 
@@ -136,17 +128,17 @@ public class StrategyInput : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            selectionManager.ClearSelection();
-            try
-            {
-                var clickable = hit.collider.transform.parent.GetComponent<ISelectable>();
-                clickable.Select();
-            } catch (NullReferenceException e)
-            {
+            selectionService.ClearSelection();
 
+            if (hit.collider.transform.parent != null && hit.collider.transform.parent.GetComponent<ISelectable>() != null)
+            {
+                var selectable = hit.collider.transform.parent.GetComponent<ISelectable>();
+                selectable.Select();
             }
-                
-            
+
+
+
+
 
         }
     }
@@ -162,11 +154,11 @@ public class StrategyInput : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
 
-                foreach (ISelectable clickable in selectionManager.GetSelected())
+                foreach (ISelectable selectable in selectionService.GetSelected())
                 {
-                    if (typeof(Character).IsInstanceOfType(clickable) && !typeof(Enemy).IsInstanceOfType(clickable))
+                    if (typeof(Character).IsInstanceOfType(selectable) && !typeof(Enemy).IsInstanceOfType(selectable))
                     {
-                        var ally = (Character)clickable;
+                        var ally = (Character)selectable;
                         if (hit.collider.CompareTag("Terrain"))
                         {
                             ally.SetObjective(null);
@@ -190,7 +182,7 @@ public class StrategyInput : MonoBehaviour
 
     private void Build()
     {
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
