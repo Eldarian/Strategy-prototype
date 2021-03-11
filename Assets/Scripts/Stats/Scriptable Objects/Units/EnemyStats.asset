@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5a270fc1f8df44e9ec7e1fdd8486c1, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
+  maxHealth: 10
+  health: 10
   damage: 1
   currentLevel: 1
   levelUps: []

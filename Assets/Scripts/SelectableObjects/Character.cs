@@ -7,7 +7,6 @@ public class Character : SelectableObject
 {
     #region Field Definitions
 
-    protected Stats stats;
     protected NavMeshAgent agent;
     [SerializeField] Transform objective;
     [SerializeField] float stopDistance;
@@ -28,7 +27,6 @@ public class Character : SelectableObject
         base.Start();
         agent = GetComponent<NavMeshAgent>();
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-        stats = GetComponent<Stats>();
         canAttack = true;
     }
 
@@ -127,7 +125,7 @@ public class Character : SelectableObject
             {
                 if (hit.transform.gameObject.GetComponent<IAttackable>() == objective.GetComponent<IAttackable>())
                 {
-
+                    Debug.LogFormat("{0} looks at {1}", name, hit.transform.gameObject);
                     /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                     {
                         isAttackPerforming = false;
@@ -154,6 +152,7 @@ public class Character : SelectableObject
             timer += Time.deltaTime;
         }
         canAttack = true;
+        isAttackPerforming = false;
     }
 
     #endregion

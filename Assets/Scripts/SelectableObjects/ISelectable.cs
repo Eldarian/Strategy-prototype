@@ -6,5 +6,5 @@ public interface ISelectable
 {
     void Select();
     void Deselect();
-    //Stats GetStats();
+    Stats GetStats();
 }

@@ -7,11 +7,13 @@ public class SelectableObject : MonoBehaviour, ISelectable
 
     SelectionService selectionManager;
     LineRenderer selectionCircle;
+    protected Stats stats;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         selectionManager = FindObjectOfType<SelectionService>();
+        stats = GetComponent<Stats>();
     }
 
     // Update is called once per frame
@@ -19,9 +21,6 @@ public class SelectableObject : MonoBehaviour, ISelectable
     {
 
     }
-
-
-
     public virtual void Deselect()
     {
         
@@ -48,5 +47,10 @@ public class SelectableObject : MonoBehaviour, ISelectable
     private void OnDestroy()
     {
         selectionManager.RemoveFromSelection(this);
+    }
+
+    public virtual Stats GetStats()
+    {
+        return stats;
     }
 }

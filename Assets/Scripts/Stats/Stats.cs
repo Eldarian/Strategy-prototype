@@ -7,6 +7,10 @@ public class Stats : MonoBehaviour
 {
     [SerializeField] Stats_SO stats_SO;
 
+    private void Start()
+    {
+        stats_SO = Instantiate(stats_SO);
+    }
     public int GetHealth()
     {
         return stats_SO.GetHealth();
