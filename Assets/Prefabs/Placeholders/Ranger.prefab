@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301691741045068034}
-  - component: {fileID: 1913614851049773372}
   - component: {fileID: 1478266935}
   - component: {fileID: 1478266932}
   - component: {fileID: 1478266936}
   - component: {fileID: 7650324334625700769}
   - component: {fileID: 7756175641870536681}
+  - component: {fileID: -8810257487870555331}
   m_Layer: 0
-  m_Name: Archer
+  m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,23 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1913614851049773372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301691741045068037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90d8ab1e80d21e49b20e530ec2d1cc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objective: {fileID: 0}
-  stopDistance: 0
-  cooldown: 1
-  definition: {fileID: 0}
-  attackRange: 0
 --- !u!54 &1478266935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,6 +112,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552728ec65e6f3844910670813133adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8810257487870555331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301691741045068037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406607a8d318e1344b201c18a6d82c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objective: {fileID: 0}
+  stopDistance: 5
+  cooldown: 1
+  definition: {fileID: 11400000, guid: cabcc625057129b4f8cca2601e9562dc, type: 2}
+  attackRange: 30
+  arrowSpeed: 30
+  projectilePrefab: {fileID: 5302751045292308619, guid: 260f36cf49718564b8b5ddd0c62fa01a,
+    type: 3}
 --- !u!1 &7301691741636727003
 GameObject:
   m_ObjectHideFlags: 0

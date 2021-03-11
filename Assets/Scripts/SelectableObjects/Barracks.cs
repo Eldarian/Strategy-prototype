@@ -18,7 +18,7 @@ public class Barracks : Building
         base.Start();
         factory = GetComponent<UnitFactory>();
         defaultObjective = new GameObject().transform;
-        defaultObjective.transform.position = transform.position + transform.forward * distance;
+        defaultObjective.transform.position = transform.position + transform.forward * distance * 3;
         startPosition = transform.position + transform.forward * distance;
         CreateUnitAction = CreateUnit;
     }
@@ -27,7 +27,6 @@ public class Barracks : Building
     {
         Debug.LogFormat("Taking unit in {0}", name);
         factory.OrderUnit(unitPrefab.gameObject, startPosition, defaultObjective, delay);
-        //factory.OrderUnitInstantly(unitPrefab.gameObject, startPosition, defaultObjective);
     }
 
     public override void Select()

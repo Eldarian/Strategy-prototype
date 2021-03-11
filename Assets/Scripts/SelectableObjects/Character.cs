@@ -11,7 +11,6 @@ public class Character : SelectableObject
     [SerializeField] Transform objective;
     [SerializeField] float stopDistance;
 
-    private float timer;
     [SerializeField] float cooldown = 1f;
     [SerializeField] AttackDefinition_SO definition;
     protected Animator animator;
@@ -112,6 +111,34 @@ public class Character : SelectableObject
         }
     }
 
+    protected void RangedAttack(Projectile prefab, float speed)
+    {
+        if (objective != null && objective.GetComponent<IAttackable>() != null)
+        {
+            stopDistance = attackRange - 1;
+            if (Vector3.Distance(transform.position, objective.position) < attackRange)
+            {
+                transform.LookAt(GetObjective());
+            }
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<IAttackable>() == objective.GetComponent<IAttackable>())
+                {
+                    if (hit.distance <= attackRange && canAttack)
+                    {
+                        var projectile = Instantiate(prefab.gameObject, transform.position + transform.forward * 3, transform.rotation).GetComponent<Projectile>();
+                        projectile.speed = speed;
+                        projectile.SetAttack(definition.CreateAttack(stats));
+
+                        canAttack = false;
+                        StartCoroutine(WaitCooldown());
+                    }
+                }
+            }
+        }
+    }
+
     protected void MeleeAttack()
     {
         if(objective != null && objective.GetComponent<IAttackable>() != null)
@@ -126,31 +153,21 @@ public class Character : SelectableObject
                 if (hit.transform.gameObject.GetComponent<IAttackable>() == objective.GetComponent<IAttackable>())
                 {
                     Debug.LogFormat("{0} looks at {1}", name, hit.transform.gameObject);
-                    /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                    {
-                        isAttackPerforming = false;
-                    }*/
 
                     if (hit.distance <= attackRange && !isAttackPerforming && canAttack)
                     {
                         animator.SetTrigger("Attack");
-                        StartCoroutine(PerformAttack());
+                        isAttackPerforming = true;
+                        canAttack = false;
+                        StartCoroutine(WaitCooldown());
                     }
                 }
             }
         }
     }
-    protected IEnumerator PerformAttack()
+    protected IEnumerator WaitCooldown()
     {
-        animator.SetTrigger("Attack");
-        isAttackPerforming = true;
-        canAttack = false;
-        timer = 0;
-        while (timer < cooldown)
-        {
-            yield return null;
-            timer += Time.deltaTime;
-        }
+        yield return new WaitForSeconds(cooldown);
         canAttack = true;
         isAttackPerforming = false;
     }

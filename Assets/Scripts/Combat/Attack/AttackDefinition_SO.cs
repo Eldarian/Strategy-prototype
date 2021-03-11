@@ -11,6 +11,6 @@ public class AttackDefinition_SO : ScriptableObject
     public Attack CreateAttack(Stats attackerStats)
     {
         var damage = attackerStats.GetDamage() + Random.Range(minDamage, maxDamage);
-        return new Attack((int) damage);
+        return new Attack((int) damage, attackerStats.gameObject);
     }
 }

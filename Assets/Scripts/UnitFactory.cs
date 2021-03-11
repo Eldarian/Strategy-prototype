@@ -6,8 +6,14 @@ public class UnitFactory : MonoBehaviour
 {
     float timer = 0;
     [SerializeField] float unitSpawnTime = 5;
+    Transform unitsParent;
     bool isTraining;
 
+
+    void Start()
+    {
+        unitsParent = GameObject.Find("Units").transform;
+    }
     Queue<Order> orders = new Queue<Order>();
     public void OrderUnit(GameObject prefab, Vector3 startPosition, Transform defaultObjective, float delay)
     {
@@ -21,7 +27,7 @@ public class UnitFactory : MonoBehaviour
 
     private Character SpawnUnit(Order order)
     {
-        return Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation).GetComponent<Character>();
+        return Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation, unitsParent).GetComponent<Character>();
     }
     
     public float GetStatus()
