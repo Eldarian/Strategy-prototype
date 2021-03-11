@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2575470078314557530}
   - component: {fileID: 2575470078314557531}
   - component: {fileID: 2575470078314557477}
+  - component: {fileID: 1098672183}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -58,3 +59,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionBox: {fileID: 0}
   buildingprefab: {fileID: 0}
+--- !u!114 &1098672183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575470078314557528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9caaeeba3341f4a98f9b108ebce28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  properties: {fileID: 0}
+  bigPortrait: {fileID: 0}

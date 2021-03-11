@@ -11,10 +11,10 @@ public class UIController : MonoBehaviour
 
     Text health;
     Text strength;
-    Button TakeUnit;
-    Button BuildWarBarracks;
-    Button BuildArchBarracks;
-    Button BuildFontain;
+    Button takeUnit;
+    Button buildWarBarracks;
+    Button buildArcherBarracks;
+    Button buildFountain;
 
     private void Start()
     {
@@ -22,6 +22,10 @@ public class UIController : MonoBehaviour
 
         health = properties.transform.Find("Health Label").GetComponent<Text>();
         strength = properties.transform.Find("Strength Label").GetComponent<Text>();
+        buildWarBarracks = properties.transform.Find("WarBarracks Button").GetComponent<Button>();
+        buildArcherBarracks = properties.transform.Find("ArcherBarracks Button").GetComponent<Button>();
+        buildFountain = properties.transform.Find("Fountain Button").GetComponent<Button>();
+        takeUnit = properties.transform.Find("Take Unit Button").GetComponent<Button>();
 
     }
 
@@ -41,23 +45,57 @@ public class UIController : MonoBehaviour
     }
     public void DrawMainObjectProperties(ISelectable selectable)
     {
-        Debug.LogFormat("Drawing properties of {0}", selectable.ToString());
+        DrawPortrait(selectable);
+        DrawHealth(selectable);
+        DrawStrength(selectable);
 
-        bigPortrait.GetComponent<Image>().sprite = selectable.GetStats().GetPortrait();
-        health.text = "Health: " + selectable.GetStats().GetHealth();
+        //Enable buttons in dependence of object type
+        if(typeof(Fortress).IsInstanceOfType(selectable))
+        {
+            buildArcherBarracks.gameObject.SetActive(true);
+            buildFountain.gameObject.SetActive(true);
+            buildWarBarracks.gameObject.SetActive(true);
+        } 
+        else
+        {
+            buildArcherBarracks.gameObject.SetActive(false);
+            buildFountain.gameObject.SetActive(false);
+            buildWarBarracks.gameObject.SetActive(false);
+        }
+
+        if(typeof(Barracks).IsInstanceOfType(selectable))
+        {
+            takeUnit.gameObject.SetActive(true);
+        } else
+        {
+            takeUnit.gameObject.SetActive(false);
+        }
+    }
+
+    private void DrawStrength(ISelectable selectable)
+    {
+        //Set and enable strength value if existing
         if (selectable.GetStats().GetDamage() > 0)
         {
             strength.gameObject.SetActive(true);
             strength.text = "Strength: " + selectable.GetStats().GetDamage();
-        } 
+        }
         else
         {
             strength.gameObject.SetActive(false);
         }
-        //Set portrait image
+    }
+
+    private void DrawHealth(ISelectable selectable)
+    {
         //Set and enable health value if existing
-        //Set and enable strength value if existing
-        //Enable buttons in dependence of object type
+        health.text = "Health: " + selectable.GetStats().GetHealth();
+    }
+
+    private void DrawPortrait(ISelectable selectable)
+    {
+        //Set portrait image
+        bigPortrait.GetComponent<Image>().sprite = selectable.GetStats().GetPortrait();
     }
 
     public void DrawSelectedUnitsIcons(ISelectable[] selectables)
