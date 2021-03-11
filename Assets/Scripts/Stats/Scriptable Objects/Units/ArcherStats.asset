@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5a270fc1f8df44e9ec7e1fdd8486c1, type: 3}
   m_Name: ArcherStats
   m_EditorClassIdentifier: 
+  portrait: {fileID: 21300000, guid: 326c3bd71392701499f3b89c9545e3eb, type: 3}
   maxHealth: 8
   health: 8
   damage: 3

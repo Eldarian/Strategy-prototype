@@ -21,6 +21,11 @@ public class Stats : MonoBehaviour
         return stats_SO.GetDamage();
     }
 
+    public Sprite GetPortrait()
+    {
+        return stats_SO.GetPortrait();
+    }
+
     public void TakeDamage(int damageAmount)
     {
         print(gameObject.name + " " + GetHealth() + " hp");

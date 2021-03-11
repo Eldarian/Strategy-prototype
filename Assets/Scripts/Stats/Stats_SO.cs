@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Stats", menuName = "Stats", order = 55)]
 public class Stats_SO : ScriptableObject //TODO make inheritance for different object types
 {
+    [SerializeField] Sprite portrait;
     [SerializeField] int maxHealth;
     [SerializeField] int health;
 
@@ -21,6 +22,10 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         public int damage;
     }
 
+    public Sprite GetPortrait()
+    {
+        return portrait;
+    }
     public void ApplyHealth(int healthAmount)
     {
         health += healthAmount;
