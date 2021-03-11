@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1026511155}
   - component: {fileID: 1026511159}
   - component: {fileID: 1026511160}
-  - component: {fileID: 1026511161}
   - component: {fileID: 5453310279282375617}
+  - component: {fileID: 7900389806911684745}
   m_Layer: 0
   m_Name: Fortress
   m_TagString: Finish
@@ -94,18 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec36bb4c5ac6a745a3ba4b714dc00e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1026511161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010329233314046371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552728ec65e6f3844910670813133adf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5453310279282375617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +104,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e8da436de092644b1da83054d83a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7900389806911684745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010329233314046371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30e13d02d8005844b91cffd9308b2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7234596864305658265
