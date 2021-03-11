@@ -235,18 +235,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8162106452393714471}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &566679122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566679121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a92d858baf9d74189a0f77fbb8ecd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &566679124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1723040640133914964, guid: 10f2b6cd994cb2942ad56f18f90846ba,
@@ -882,6 +870,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6285847078016254968}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1098672185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2575470078314557531, guid: a4899c859796efb47924f32b168cd6a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2575470078876687973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53871a31b9914dd4ca13322728829447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1201964816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3779539168680506733, guid: ff89fca53a8610f46956392f838508c4,
@@ -1057,12 +1057,46 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2648193978387881826}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1722276437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6321599288071441046, guid: 51cea2a6e7a3ef54aac8dc28297075e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7162156052210713765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1722276438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2089836239335767663, guid: 51cea2a6e7a3ef54aac8dc28297075e1,
     type: 3}
   m_PrefabInstance: {fileID: 7162156052210713765}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722276444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722276437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7688dc9f5beb98648b0fc0cd2bccbd67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 60
+  prefab: {fileID: 2387395760316495224, guid: 59047bdccc46c7c44a9950ad80a0feda, type: 3}
+  objective: {fileID: 0}
+--- !u!114 &1722276445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722276437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794ceb42475cf2f4ab4b8195d0f1fa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitSpawnTime: 0
 --- !u!4 &1773195767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1928436195094456324, guid: 59047bdccc46c7c44a9950ad80a0feda,
@@ -1628,7 +1662,7 @@ PrefabInstance:
     - target: {fileID: 3779539168680506737, guid: ff89fca53a8610f46956392f838508c4,
         type: 3}
       propertyPath: m_Name
-      value: Ranger Camp
+      value: Ranger Barracks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff89fca53a8610f46956392f838508c4, type: 3}
@@ -1997,6 +2031,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 603567490}
     m_Modifications:
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1098672185}
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakingUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 776382876449758801, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4330426262758972345, guid: e4ecca07f17bc3b428eaafbe6cffd16c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2211,6 +2275,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior Barracks
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 566679123, guid: 10f2b6cd994cb2942ad56f18f90846ba, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f2b6cd994cb2942ad56f18f90846ba, type: 3}

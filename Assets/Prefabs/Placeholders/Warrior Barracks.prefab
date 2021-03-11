@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 1723040640133914964}
   - component: {fileID: 566679128}
   - component: {fileID: 566679122}
-  - component: {fileID: 566679123}
   - component: {fileID: 566679125}
   - component: {fileID: 566679126}
   - component: {fileID: 566679127}
+  - component: {fileID: 4908724670664737095}
+  - component: {fileID: 566679129}
   m_Layer: 0
   m_Name: Warrior Barracks
   m_TagString: Untagged
@@ -69,18 +70,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &566679123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2597540871107690154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d020614addb69f94390f2bef7993eddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &566679125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +107,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552728ec65e6f3844910670813133adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4908724670664737095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597540871107690154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a92d858baf9d74189a0f77fbb8ecd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 385090623, guid: 8c17a94d79577354d91bdb23dafde036, type: 3}
+  distance: 15
+  delay: 5
+--- !u!114 &566679129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597540871107690154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794ceb42475cf2f4ab4b8195d0f1fa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitSpawnTime: 5
 --- !u!1 &8162106452896437408
 GameObject:
   m_ObjectHideFlags: 0

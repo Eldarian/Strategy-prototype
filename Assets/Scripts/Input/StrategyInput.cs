@@ -81,6 +81,7 @@ public class StrategyInput : MonoBehaviour
                 HandleSingleLeftClick();
             }
 
+            
         }
     }
 
@@ -135,11 +136,6 @@ public class StrategyInput : MonoBehaviour
                 var selectable = hit.collider.transform.parent.GetComponent<ISelectable>();
                 selectable.Select();
             }
-
-
-
-
-
         }
     }
 

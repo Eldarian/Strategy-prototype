@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794ceb42475cf2f4ab4b8195d0f1fa2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitSpawnTime: 5
 --- !u!114 &1201964817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a92d858baf9d74189a0f77fbb8ecd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 1913614851049773372, guid: 6668207c885386f408ca2fadf8d5d882,
+    type: 3}
+  distance: 15
+  delay: 5

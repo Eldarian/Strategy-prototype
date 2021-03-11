@@ -5,14 +5,14 @@ using UnityEngine;
 public class SelectableObject : MonoBehaviour, ISelectable
 {
 
-    SelectionService selectionManager;
+    protected SelectionService selectionService;
     LineRenderer selectionCircle;
     protected Stats stats;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        selectionManager = FindObjectOfType<SelectionService>();
+        selectionService = FindObjectOfType<SelectionService>();
         stats = GetComponent<Stats>();
     }
 
@@ -30,9 +30,9 @@ public class SelectableObject : MonoBehaviour, ISelectable
 
     public virtual void Select()
     {
-        if (!selectionManager.isSelected(this))
+        if (!selectionService.isSelected(this))
         {
-            selectionManager.AddToSelected(this);
+            selectionService.AddToSelected(this);
             if (selectionCircle == null)
             {
                 selectionCircle = gameObject.DrawCircle(transform.GetChild(0).localScale.x, 0.5f);
@@ -46,7 +46,7 @@ public class SelectableObject : MonoBehaviour, ISelectable
 
     private void OnDestroy()
     {
-        selectionManager.RemoveFromSelection(this);
+        selectionService.RemoveFromSelection(this);
     }
 
     public virtual Stats GetStats()

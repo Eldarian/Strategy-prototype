@@ -54,7 +54,6 @@ public class UnitFactory : MonoBehaviour
         SpawnUnit(order);
         isTraining = false;
     }
-
     private class Order
     {
         public readonly GameObject prefab;

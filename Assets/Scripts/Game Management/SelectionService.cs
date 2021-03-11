@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class SelectionService : MonoBehaviour
 {
+    public event Action OnTakingUnit;
+
     List<ISelectable> selected = new List<ISelectable>();
+
+    public void TakingUnit()
+    {
+        OnTakingUnit();
+    }
+
+
     public void AddToSelected(List<ISelectable> multiple)
     {
         ClearSelection();
