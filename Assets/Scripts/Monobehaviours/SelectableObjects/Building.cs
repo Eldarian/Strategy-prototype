@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Building : SelectableObject
 {
+    protected MoneyManager moneyManager;
     public override void Deselect()
     {
         base.Deselect();
@@ -19,6 +20,8 @@ public class Building : SelectableObject
     public override void Start()
     {
         base.Start();
+        moneyManager = FindObjectOfType<MoneyManager>();
+
     }
 
     // Update is called once per frame

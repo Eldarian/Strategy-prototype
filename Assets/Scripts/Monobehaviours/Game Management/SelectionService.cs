@@ -1,18 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionService : SingletonBehaviour<SelectionService>
 {
-    public event Action OnTakingUnit;
-
     List<ISelectable> selected = new List<ISelectable>();
 
-    public void TakingUnit()
-    {
-        OnTakingUnit();
-    }
+    
 
 
     public void AddToSelected(List<ISelectable> multiple)

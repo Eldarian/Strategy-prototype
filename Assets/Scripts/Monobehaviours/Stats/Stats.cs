@@ -10,7 +10,7 @@ public class Stats : MonoBehaviour
     private void Start()
     {
         stats_SO = Instantiate(stats_SO);
-        stats_SO.currentHealth = stats_SO.maxHealth;
+        stats_SO.InitializeHealth();    
     }
     public int GetHealth()
     {
@@ -44,6 +44,15 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public int GetPrice()
+    {
+        return stats_SO.GetPrice();
+    }
+
+    public int GetUnitPrice()
+    {
+        return stats_SO.GetUnitPrice();
+    }
     public void ApplyHealth(int healthAmount)
     {
         stats_SO.ApplyHealth(healthAmount);

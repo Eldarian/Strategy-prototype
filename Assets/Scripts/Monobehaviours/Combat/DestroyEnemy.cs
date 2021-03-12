@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyFortress : MonoBehaviour, IDestructible
+public class DestroyEnemy : MonoBehaviour, IDestructible
 {
     GameManager gameManager;
 
@@ -13,7 +13,6 @@ public class DestroyFortress : MonoBehaviour, IDestructible
     public void OnDestruction()
     {
         Destroy(gameObject);
-        Debug.Log("Game Over");
-        gameManager.OnGameEnd();
+        gameManager.OnEnemyDeath(GetComponent<Enemy>().waveNumber);
     }
 }

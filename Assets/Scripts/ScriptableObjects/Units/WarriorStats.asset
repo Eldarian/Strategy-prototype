@@ -15,12 +15,17 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: 3766fbe71e0217e4f944d54ab36e16f4, type: 3}
   maxHealth: 10
   currentHealth: 0
+  price: 0
   baseDamage: 5
-  currentLevel: 1
+  currentLevel: 0
+  unitStats: {fileID: 0}
   levelUps:
   - maxHealth: 8
     baseDamage: 5
+    price: 0
   - maxHealth: 10
     baseDamage: 5
+    price: 0
   - maxHealth: 10
     baseDamage: 5
+    price: 0

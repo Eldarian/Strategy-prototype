@@ -20,6 +20,7 @@ public class UIController : SingletonBehaviour<UIController>
     Button buildWarBarracks;
     Button buildRangerBarracks;
     Button buildFountain;
+    Button upgrade;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class UIController : SingletonBehaviour<UIController>
         buildRangerBarracks = properties.transform.Find("RangerBarracks Button").GetComponent<Button>();
         buildFountain = properties.transform.Find("Fountain Button").GetComponent<Button>();
         takeUnit = properties.transform.Find("Take Unit Button").GetComponent<Button>();
+        upgrade = properties.transform.Find("Upgrade Button").GetComponent<Button>();
     }
 
     private void Update()
@@ -86,9 +88,11 @@ public class UIController : SingletonBehaviour<UIController>
         if(typeof(Barracks).IsInstanceOfType(selectable))
         {
             takeUnit.gameObject.SetActive(true);
+            upgrade.gameObject.SetActive(true);
         } else
         {
             takeUnit.gameObject.SetActive(false);
+            upgrade.gameObject.SetActive(false);
         }
     }
 
