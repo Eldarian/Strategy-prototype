@@ -30,7 +30,7 @@ public class WaveSpawner : MonoBehaviour
     {
         for (int i = 0; i < waveSize; i++)
         {
-            var enemy = (Enemy)factory.GetUnitInstantly(prefab, transform.position + transform.forward * 15, null);
+            var enemy = (Enemy)factory.SpawnUnitInstantly(prefab, transform.position + transform.forward * 15, null);
             enemy.waveNumber = waveNumber;
             enemy.GetStats().SetLevel(level);
         }

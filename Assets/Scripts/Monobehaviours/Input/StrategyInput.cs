@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class StrategyInput : MonoBehaviour
 {
+
+    #region Fields
     SelectionService selectionService;
     public RectTransform selectionBox;
     Vector2 boxStartPos;
@@ -17,6 +19,9 @@ public class StrategyInput : MonoBehaviour
     enum InputMode { Default, Build };
     InputMode mode = InputMode.Default;
 
+    #endregion
+
+    #region Init
     private void Start()
     {
         selectionService = FindObjectOfType<SelectionService>();
@@ -49,6 +54,8 @@ public class StrategyInput : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
     #region Unit Selection
     private void SelectUnits()

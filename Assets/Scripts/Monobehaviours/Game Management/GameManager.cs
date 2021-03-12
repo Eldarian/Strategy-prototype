@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
+    #region Fields
     int currentWaveNumber;
     [SerializeField] int initialWealth;
     [SerializeField] List<WaveDefinition_SO> waveDefinitions;
@@ -16,6 +17,9 @@ public class GameManager : SingletonBehaviour<GameManager>
     StrategyInput input;
     public Action<GameObject> BuildAction;
 
+    #endregion
+
+    #region Game Init
     private void Awake()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
@@ -31,10 +35,20 @@ public class GameManager : SingletonBehaviour<GameManager>
         moneyManager.AddMoney(initialWealth);
         StartCoroutine(GameLoop());
     }
+    IEnumerator GameLoop()
+    {
+        for (int i = 0; i < waveDefinitions.Count; i++)
+        {
+            yield return new WaitForSeconds(waveDefinitions[i].delayBeforeWave);
+            waveSpawner.CallWave(i + 1, waveDefinitions[i].waveSize, waveDefinitions[i].enemyLevel);
+            yield return new WaitForSeconds(waveDefinitions[i].waveDuration);
+        }
+    }
 
+    #endregion
 
-
-    int GetCurrentWaveNumber()
+    #region Getters
+    int GetCurrentWaveNumber() //for UI
     {
         return currentWaveNumber;
     }
@@ -77,6 +91,9 @@ public class GameManager : SingletonBehaviour<GameManager>
         return false;
     }
 
+    #endregion
+
+    #region Action handlers
     public void OnEnemyDeath(int waveNumber)
     {
         if(IsWaveDefeated(waveNumber))
@@ -107,15 +124,5 @@ public class GameManager : SingletonBehaviour<GameManager>
             Debug.Log("Not enough money");
         }
     }
-
-    IEnumerator GameLoop()
-    {
-        for (int i = 0; i < waveDefinitions.Count; i++)
-        {
-            yield return new WaitForSeconds(waveDefinitions[i].delayBeforeWave);
-            waveSpawner.CallWave(i+1, waveDefinitions[i].waveSize, waveDefinitions[i].enemyLevel);
-            yield return new WaitForSeconds(waveDefinitions[i].waveDuration);
-        }
-    }
-
+    #endregion
 }

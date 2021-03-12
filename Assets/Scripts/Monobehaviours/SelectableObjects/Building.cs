@@ -5,16 +5,7 @@ using UnityEngine;
 public class Building : SelectableObject
 {
     protected MoneyManager moneyManager;
-    public override void Deselect()
-    {
-        base.Deselect();
-    }
-
-    public override void Select()
-    {
-        base.Select();
-        
-    }
+    
 
     // Start is called before the first frame update
     public override void Start()
@@ -28,5 +19,16 @@ public class Building : SelectableObject
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void Deselect()
+    {
+        base.Deselect();
+    }
+
+    public override void Select()
+    {
+        base.Select();
+
     }
 }

@@ -5,33 +5,40 @@ using UnityEngine;
 
 public class Barracks : Building
 {
+    #region Fields
     UnitFactory factory;
     [SerializeField] Character unitPrefab;
     Transform defaultObjective;
     Vector3 startPosition;
-    [SerializeField] float distance;
-    [SerializeField] float delay;
+    [SerializeField] float spawnDistance;
+    [SerializeField] float spawnDelay;
     ShopSystem shop;
     public Action CreateUnitAction;
     public Action UpgradeBarracksAction;
 
+    #endregion
+
+    #region Init
     public override void Start()
     {
         base.Start();
         shop = FindObjectOfType<ShopSystem>();
         factory = GetComponent<UnitFactory>();
         defaultObjective = new GameObject().transform;
-        defaultObjective.transform.position = transform.position + transform.forward * distance * 3;
-        startPosition = transform.position + transform.forward * distance;
+        defaultObjective.transform.position = transform.position + transform.forward * spawnDistance * 3;
+        startPosition = transform.position + transform.forward * spawnDistance;
         CreateUnitAction = CreateUnit;
         UpgradeBarracksAction = UpgradeBarracks;
     }
 
+    #endregion
+
+    #region Actions
     void CreateUnit()
     {
         if (moneyManager.SpendMoney(stats.GetUnitPrice()))
         {
-            factory.OrderUnit(unitPrefab.gameObject, startPosition, defaultObjective, delay);
+            factory.OrderUnit(unitPrefab.gameObject, startPosition, defaultObjective, spawnDelay);
         } 
         else
         {
@@ -51,6 +58,9 @@ public class Barracks : Building
         }
     }
 
+    #endregion
+
+    #region Selection
     public override void Select()
     {
         base.Select();
@@ -65,5 +75,5 @@ public class Barracks : Building
         shop.OnUpgrade -= UpgradeBarracksAction;
 
     }
-
+    #endregion
 }

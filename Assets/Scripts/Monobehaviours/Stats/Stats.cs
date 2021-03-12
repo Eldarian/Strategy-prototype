@@ -12,6 +12,8 @@ public class Stats : MonoBehaviour
         stats_SO = Instantiate(stats_SO);
         stats_SO.InitializeHealth();    
     }
+
+    #region Getters
     public int GetHealth()
     {
         return stats_SO.GetHealth();
@@ -26,7 +28,23 @@ public class Stats : MonoBehaviour
     {
         return stats_SO.GetPortrait();
     }
+    public int GetLevel()
+    {
+        return stats_SO.GetLevel();
+    }
 
+    public int GetPrice()
+    {
+        return stats_SO.GetPrice();
+    }
+
+    public int GetUnitPrice()
+    {
+        return stats_SO.GetUnitPrice();
+    }
+    #endregion
+
+    #region Handlers
     public void TakeDamage(int damageAmount)
     {
         print(gameObject.name + " " + GetHealth() + " hp");
@@ -44,15 +62,7 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public int GetPrice()
-    {
-        return stats_SO.GetPrice();
-    }
-
-    public int GetUnitPrice()
-    {
-        return stats_SO.GetUnitPrice();
-    }
+    
     public void ApplyHealth(int healthAmount)
     {
         stats_SO.ApplyHealth(healthAmount);
@@ -69,8 +79,6 @@ public class Stats : MonoBehaviour
         stats_SO.SetLevel(level);
     }
 
-    public int GetLevel()
-    {
-        return stats_SO.GetLevel();
-    }
+    #endregion
+
 }

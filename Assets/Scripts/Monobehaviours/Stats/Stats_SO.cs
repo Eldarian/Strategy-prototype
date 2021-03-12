@@ -14,6 +14,8 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         public int price;
     }
 
+    #region Fields
+
     [SerializeField] Sprite portrait;
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
@@ -27,19 +29,40 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
 
     [SerializeField] LevelUp[] levelUps;
 
+    #endregion
+
+    #region Setters 
+
+    public void InitializeHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
+    public void SetLevel(int level)
+    {
+        while (currentLevel < level)
+        {
+            HandleLevelUp();
+        }
+    }
+
+    #endregion
+
+    #region Getters
+    public int GetUnitPrice()
+    {
+        int price = unitStats.GetPrice();
+        for (int i = 0; i < currentLevel; i++)
+        {
+            price += unitStats.GetLevelsData()[i].price;
+        }
+        return price;
+    }
     public Sprite GetPortrait()
     {
         return portrait;
     }
-    public void ApplyHealth(int healthAmount)
-    {
-        Debug.Log("Healing");
-        currentHealth += healthAmount;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-    }
+
 
     public int GetPrice()
     {
@@ -56,6 +79,27 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         return baseDamage;
     }
 
+    public int GetLevel()
+    {
+        return currentLevel + 1;
+    }
+
+    public LevelUp[] GetLevelsData()
+    {
+        return levelUps;
+    }
+    #endregion
+
+    #region Handlers
+    public void ApplyHealth(int healthAmount)
+    {
+        Debug.Log("Healing");
+        currentHealth += healthAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
     public bool TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
@@ -67,21 +111,6 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         return currentHealth == 0;
     }
 
-    public void InitializeHealth()
-    {
-        currentHealth = maxHealth;
-    }
-
-    public int GetUnitPrice()
-    {
-        int price = unitStats.GetPrice();
-        for (int i = 0; i < currentLevel; i++)
-        {
-            price += unitStats.GetLevelsData()[i].price;
-        }
-        return price;
-    }
-
     public void HandleLevelUp()
     {
         currentLevel += 1;
@@ -91,21 +120,5 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         baseDamage += levelUps[currentLevel - 1].baseDamage;
     }
 
-    public void SetLevel(int level)
-    {
-        while(currentLevel < level)
-        {
-            HandleLevelUp();
-        }
-    }
-
-    public int GetLevel()
-    {
-        return currentLevel + 1;
-    }
-
-    public LevelUp[] GetLevelsData()
-    {
-        return levelUps;
-    }
+    #endregion
 }

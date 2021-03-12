@@ -4,62 +4,6 @@ using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
 {
-    float timer = 0;
-    [SerializeField] float unitSpawnTime = 5;
-    Transform unitsParent;
-    bool isTraining;
-
-
-    void Start()
-    {
-        unitsParent = GameObject.Find("Units").transform;
-    }
-    Queue<Order> orders = new Queue<Order>();
-    public void OrderUnit(GameObject prefab, Vector3 startPosition, Transform defaultObjective, float delay)
-    {
-        orders.Enqueue(new Order(prefab, startPosition, defaultObjective, delay));
-    }
-
-    public Character GetUnitInstantly(GameObject prefab, Vector3 startPosition, Transform defaultObjective)
-    {
-        return SpawnUnit(new Order(prefab, startPosition, defaultObjective));
-    }
-
-    private Character SpawnUnit(Order order)
-    {
-        return Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation, unitsParent).GetComponent<Character>();
-    }
-    
-    public float GetStatus()
-    {
-        if(isTraining)
-        {
-            return timer / unitSpawnTime;
-        }
-        return 0;
-    }
-
-    public void SetUnitSpawnTime(float time)
-    {
-        unitSpawnTime = time;
-    }
-
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if(!isTraining && orders.Count > 0)
-        {
-            StartCoroutine(PrepareUnit(orders.Dequeue()));
-        }
-    }
-    IEnumerator PrepareUnit(Order order)
-    {
-        isTraining = true;
-        timer = 0;
-        yield return new WaitForSeconds(order.delay);
-        SpawnUnit(order);
-        isTraining = false;
-    }
     private class Order
     {
         public readonly GameObject prefab;
@@ -75,9 +19,71 @@ public class UnitFactory : MonoBehaviour
             delay = _delay;
         }
 
-        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective) : this(_prefab, _startPosition, _objective, 0)
-        {
+        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective) : this(_prefab, _startPosition, _objective, 0) { }
+    }
 
+    #region Fields
+
+    float timer = 0;
+    float unitSpawnTime;
+    Transform unitsParent;
+    bool isTraining;
+    Queue<Order> orders = new Queue<Order>();
+    #endregion
+
+    #region Init
+    void Start()
+    {
+        unitsParent = GameObject.Find("Units").transform;
+    }
+
+    #endregion
+
+    #region Getters and Setters
+    public int GetStatus() //for statusBar
+    {
+        if (isTraining)
+        {
+            return (int)((timer / unitSpawnTime) * 100);
+        }
+        return 0;
+    }
+    #endregion
+
+    #region Spawn methods
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (!isTraining && orders.Count > 0)
+        {
+            StartCoroutine(PrepareUnit(orders.Dequeue()));
         }
     }
+    IEnumerator PrepareUnit(Order order)
+    {
+        isTraining = true;
+        unitSpawnTime = order.delay;
+        timer = 0;
+        yield return new WaitForSeconds(order.delay);
+        SpawnUnit(order);
+        isTraining = false;
+    }
+
+    public void OrderUnit(GameObject prefab, Vector3 startPosition, Transform defaultObjective, float delay)
+    {
+        orders.Enqueue(new Order(prefab, startPosition, defaultObjective, delay));
+    }
+
+    public Character SpawnUnitInstantly(GameObject prefab, Vector3 startPosition, Transform defaultObjective)
+    {
+        return SpawnUnit(new Order(prefab, startPosition, defaultObjective));
+    }
+
+    private Character SpawnUnit(Order order)
+    {
+        return Instantiate(order.prefab, order.startPosition, order.prefab.transform.rotation, unitsParent).GetComponent<Character>();
+    }
+
+    #endregion
 }

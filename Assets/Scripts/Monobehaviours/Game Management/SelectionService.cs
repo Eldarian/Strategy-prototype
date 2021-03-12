@@ -6,9 +6,6 @@ public class SelectionService : SingletonBehaviour<SelectionService>
 {
     List<ISelectable> selected = new List<ISelectable>();
 
-    
-
-
     public void AddToSelected(List<ISelectable> multiple)
     {
         ClearSelection();
