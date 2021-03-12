@@ -33,6 +33,7 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
     }
     public void ApplyHealth(int healthAmount)
     {
+        Debug.Log("Healing");
         currentHealth += healthAmount;
         if (currentHealth > maxHealth)
         {

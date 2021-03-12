@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1838641868737894659}
   - component: {fileID: 8842112523681201994}
   - component: {fileID: 5631164015893725096}
+  - component: {fileID: -6624801276656302375}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -47,7 +48,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3
-  m_Speed: 10
+  m_Speed: 50
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -127,6 +128,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552728ec65e6f3844910670813133adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6624801276656302375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3578411652716982943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47764248427c219418b2a5a3d653546d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6332115263907769116

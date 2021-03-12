@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7650324334625700769}
   - component: {fileID: 7756175641870536681}
   - component: {fileID: -8810257487870555331}
+  - component: {fileID: -8234662903217891043}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Untagged
@@ -63,7 +64,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3
-  m_Speed: 10
+  m_Speed: 50
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -132,6 +133,18 @@ MonoBehaviour:
   arrowSpeed: 30
   projectilePrefab: {fileID: 5302751045292308619, guid: 260f36cf49718564b8b5ddd0c62fa01a,
     type: 3}
+--- !u!114 &-8234662903217891043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301691741045068037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47764248427c219418b2a5a3d653546d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7301691741636727003
 GameObject:
   m_ObjectHideFlags: 0
