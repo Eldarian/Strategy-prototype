@@ -10,8 +10,8 @@ public class UIController : SingletonBehaviour<UIController>
     MoneyManager moneyManager;
     public GameObject properties; //TODO make more clear
     public GameObject bigPortrait;
-    
 
+    Text name;
     Text health;
     Text strength;
     Text level;
@@ -30,7 +30,7 @@ public class UIController : SingletonBehaviour<UIController>
 
     private void Start()
     {
-        
+        name = properties.transform.Find("Name Label").GetComponent<Text>();
         health = properties.transform.Find("Health Label").GetComponent<Text>();
         strength = properties.transform.Find("Strength Label").GetComponent<Text>();
         level = properties.transform.Find("Level Label").GetComponent<Text>();
@@ -67,6 +67,7 @@ public class UIController : SingletonBehaviour<UIController>
     public void DrawMainObjectProperties(ISelectable selectable)
     {
         DrawPortrait(selectable);
+        DrawName(selectable);
         DrawHealth(selectable);
         DrawStrength(selectable);
         DrawLevel(selectable);
@@ -94,6 +95,11 @@ public class UIController : SingletonBehaviour<UIController>
             takeUnit.gameObject.SetActive(false);
             upgrade.gameObject.SetActive(false);
         }
+    }
+
+    private void DrawName(ISelectable selectable)
+    {
+        name.text = selectable.GetStats().gameObject.name; //TODO replace to normal naming
     }
 
     private void DrawLevel(ISelectable selectable)
@@ -129,7 +135,7 @@ public class UIController : SingletonBehaviour<UIController>
 
     public void DrawSelectedUnitsIcons(ISelectable[] selectables)
     {
-        //Set portraits and counts for selected units
+        //TODO Set portraits and counts for selected units
     }
 
     public void OnDeselect()
