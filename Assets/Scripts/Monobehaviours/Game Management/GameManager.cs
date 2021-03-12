@@ -84,7 +84,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private bool IsWaveDefeated(int waveNumber)
     {
-        if (GetWaveEnemiesCount(waveNumber) == 0)
+        if (GetWaveEnemiesCount(waveNumber) <= 1)
         {
             return true;
         }
@@ -99,12 +99,15 @@ public class GameManager : SingletonBehaviour<GameManager>
         if(IsWaveDefeated(waveNumber))
         {
             OnWaveDefeated(waveNumber);
+            print(waveNumber + " defeated");
         }
     }
 
     private void OnWaveDefeated(int waveNumber)
     {
-        moneyManager.AddMoney(waveDefinitions[waveNumber].moneyReward);
+        moneyManager.AddMoney(waveDefinitions[waveNumber-1].moneyReward);
+        print(waveDefinitions[waveNumber - 1].moneyReward + " got");
+
     }
 
     public void OnGameEnd()

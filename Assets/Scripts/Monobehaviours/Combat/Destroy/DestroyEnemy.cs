@@ -12,7 +12,8 @@ public class DestroyEnemy : MonoBehaviour, IDestructible
     }
     public void OnDestruction()
     {
-        Destroy(gameObject);
+        print("Destroyed");
         gameManager.OnEnemyDeath(GetComponent<Enemy>().waveNumber);
+        Destroy(gameObject);
     }
 }
