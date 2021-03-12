@@ -7,7 +7,7 @@ public class Stats : MonoBehaviour
 {
     [SerializeField] Stats_SO stats_SO;
 
-    private void Start()
+    private void Awake()
     {
         stats_SO = Instantiate(stats_SO);
         stats_SO.InitializeHealth();    

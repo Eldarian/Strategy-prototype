@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
     {
         waveNumber = _waveNumber;
         waveSize = _waveSize;
-        level = _enemiesLevel;
+        level = _enemiesLevel - 1;
         SpawnWave();
     }
 

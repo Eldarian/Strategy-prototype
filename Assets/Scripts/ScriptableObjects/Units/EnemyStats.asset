@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
   portrait: {fileID: 21300000, guid: f986196fb8e49604789b2769eb72031b, type: 3}
-  maxHealth: 8
+  maxHealth: 3
   currentHealth: 0
   price: 0
-  baseDamage: 3
+  baseDamage: 2
   currentLevel: 0
   unitStats: {fileID: 0}
   levelUps:
