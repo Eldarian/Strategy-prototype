@@ -10,16 +10,18 @@ public class UnitFactory : MonoBehaviour
         public readonly Vector3 startPosition;
         public readonly Transform defaultObjective;
         public readonly float delay;
+        public int level;
 
-        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective, float _delay)
+        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective, int _level, float _delay)
         {
             prefab = _prefab;
             startPosition = _startPosition;
             defaultObjective = _objective;
             delay = _delay;
+            level = _level;
         }
 
-        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective) : this(_prefab, _startPosition, _objective, 0) { }
+        public Order(GameObject _prefab, Vector3 _startPosition, Transform _objective) : this(_prefab, _startPosition, _objective, 0, 0) { }
     }
 
     #region Fields
@@ -66,13 +68,14 @@ public class UnitFactory : MonoBehaviour
         unitSpawnTime = order.delay;
         timer = 0;
         yield return new WaitForSeconds(order.delay);
-        SpawnUnit(order);
+        var unit = SpawnUnit(order);
+        unit.GetStats().SetLevel(order.level);
         isTraining = false;
     }
 
-    public void OrderUnit(GameObject prefab, Vector3 startPosition, Transform defaultObjective, float delay)
+    public void OrderUnit(GameObject prefab, Vector3 startPosition, Transform defaultObjective, float delay, int level)
     {
-        orders.Enqueue(new Order(prefab, startPosition, defaultObjective, delay));
+        orders.Enqueue(new Order(prefab, startPosition, defaultObjective, level, delay));
     }
 
     public Character SpawnUnitInstantly(GameObject prefab, Vector3 startPosition, Transform defaultObjective)

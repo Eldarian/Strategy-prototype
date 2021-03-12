@@ -24,8 +24,8 @@ public class Barracks : Building
         base.Start();
         shop = FindObjectOfType<ShopSystem>();
         factory = GetComponent<UnitFactory>();
-        defaultObjective = new GameObject().transform;
-        defaultObjective.transform.position = transform.position + transform.forward * spawnDistance * 3;
+        /*defaultObjective = new GameObject().transform;
+        defaultObjective.transform.position = transform.position + transform.forward * spawnDistance * 3;*/
         startPosition = transform.position + transform.forward * spawnDistance;
         CreateUnitAction = CreateUnit;
         UpgradeBarracksAction = UpgradeBarracks;
@@ -38,7 +38,7 @@ public class Barracks : Building
     {
         if (moneyManager.SpendMoney(stats.GetUnitPrice()))
         {
-            factory.OrderUnit(unitPrefab.gameObject, startPosition, defaultObjective, spawnDelay);
+            factory.OrderUnit(unitPrefab.gameObject, startPosition, defaultObjective, spawnDelay, GetStats().GetLevel());
         } 
         else
         {

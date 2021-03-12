@@ -40,7 +40,7 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
 
     public void SetLevel(int level)
     {
-        while (currentLevel < level)
+        while (currentLevel < level - 1)
         {
             HandleLevelUp();
         }

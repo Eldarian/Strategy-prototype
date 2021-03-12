@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
     {
         waveNumber = _waveNumber;
         waveSize = _waveSize;
-        level = _enemiesLevel - 1;
+        level = _enemiesLevel;
         SpawnWave();
     }
 
@@ -36,10 +36,3 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 }
-
-
-/*GameObject character = factory.GetUnitInstantly(prefab, transform.position + transform.forward * 15, null).gameObject;
-            Enemy enemy = character.GetComponent<Enemy>();
-            enemy.waveNumber = waveNumber;
-            Stats stats = character.GetComponent<Stats>();
-            stats.SetLevel(level);*/
