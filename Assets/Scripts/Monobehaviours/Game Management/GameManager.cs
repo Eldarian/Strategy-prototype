@@ -8,16 +8,22 @@ public class GameManager : SingletonBehaviour<GameManager>
 {
     int currentWaveNumber;
     [SerializeField] int initialWealth;
+    [SerializeField] List<WaveDefinition_SO> waveDefinitions;
 
     WaveSpawner waveSpawner; //TODO make a List variable and tune game for multiple enemy spawn points
     MoneyManager moneyManager;
-    [SerializeField] List<WaveDefinition_SO> waveDefinitions;
-
+    ShopSystem shop;
+    StrategyInput input;
+    public Action<GameObject> BuildAction;
 
     private void Awake()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
         waveSpawner = FindObjectOfType<WaveSpawner>();
+        shop = FindObjectOfType<ShopSystem>();
+        input = FindObjectOfType<StrategyInput>();
+        BuildAction = Build;
+        shop.OnBuild += BuildAction;
     }
 
     private void Start()
@@ -25,6 +31,9 @@ public class GameManager : SingletonBehaviour<GameManager>
         moneyManager.AddMoney(initialWealth);
         StartCoroutine(GameLoop());
     }
+
+
+
     int GetCurrentWaveNumber()
     {
         return currentWaveNumber;
@@ -85,6 +94,20 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    void Build(GameObject prefab)
+    {
+        var stats = prefab.GetComponent<Stats>();
+        if (moneyManager.SpendMoney(stats.GetPrice()))
+        {
+            input.EnableBuildMode(prefab);
+        }
+        else
+        {
+            Debug.Log("Not enough money");
+        }
+    }
+
     IEnumerator GameLoop()
     {
         for (int i = 0; i < waveDefinitions.Count; i++)

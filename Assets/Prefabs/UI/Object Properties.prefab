@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 6999783242832543116, guid: 3ce58107924c3a141909b98a78d3cd73,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnableBuildMode
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 6999783242832543116, guid: 3ce58107924c3a141909b98a78d3cd73,
         type: 3}
@@ -718,7 +718,7 @@ PrefabInstance:
     - target: {fileID: 5688187987850877155, guid: 9e833732600ee7641810be114c04bae6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnableBuildMode
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 5688187987850877155, guid: 9e833732600ee7641810be114c04bae6,
         type: 3}
@@ -883,7 +883,7 @@ PrefabInstance:
     - target: {fileID: 6999783242832543116, guid: 3ce58107924c3a141909b98a78d3cd73,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnableBuildMode
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 6999783242832543116, guid: 3ce58107924c3a141909b98a78d3cd73,
         type: 3}

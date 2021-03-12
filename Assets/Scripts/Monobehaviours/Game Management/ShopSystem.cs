@@ -6,17 +6,20 @@ using UnityEngine;
 
 public class ShopSystem : SingletonBehaviour<ShopSystem>
 {
-    MoneyManager moneyManager;
+    GameManager gameManager;
 
     private void Awake()
     {
-        moneyManager = FindObjectOfType<MoneyManager>();
+        gameManager = FindObjectOfType<GameManager>();
+
     }
 
 
     public event Action OnUpgrade;
 
     public event Action OnTakingUnit;
+
+    public event Action<GameObject> OnBuild;
 
     public void TakingUnit()
     {
@@ -26,5 +29,10 @@ public class ShopSystem : SingletonBehaviour<ShopSystem>
     public void Upgrade()
     {
         OnUpgrade();
+    }
+
+    public void Build(GameObject building)
+    {
+        OnBuild(building);
     }
 }
