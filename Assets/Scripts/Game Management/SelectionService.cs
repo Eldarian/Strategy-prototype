@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectionService : MonoBehaviour
+public class SelectionService : SingletonBehaviour<SelectionService>
 {
     public event Action OnTakingUnit;
 

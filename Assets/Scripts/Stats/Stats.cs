@@ -10,6 +10,7 @@ public class Stats : MonoBehaviour
     private void Start()
     {
         stats_SO = Instantiate(stats_SO);
+        stats_SO.currentHealth = stats_SO.maxHealth;
     }
     public int GetHealth()
     {
@@ -51,5 +52,10 @@ public class Stats : MonoBehaviour
     public void HandleLevelUp()
     {
         stats_SO.HandleLevelUp();
+    }
+
+    public void SetLevel(int level)
+    {
+        stats_SO.SetLevel(level);
     }
 }

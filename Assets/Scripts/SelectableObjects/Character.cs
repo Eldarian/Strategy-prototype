@@ -103,7 +103,6 @@ public class Character : SelectableObject
         {
             attackedGameObject = attackedGameObject.transform.parent.gameObject;
         }
-        print(attackedGameObject.name);
         if (attackedGameObject.GetComponent<IAttackable>() != null && isAttackPerforming)
         {
             attackedGameObject.GetComponent<IAttackable>().OnAttack(gameObject, definition.CreateAttack(stats));

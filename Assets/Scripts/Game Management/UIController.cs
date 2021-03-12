@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : SingletonBehaviour<UIController>
 {
     SelectionService selectionService;
     public GameObject properties; //TODO make more clear

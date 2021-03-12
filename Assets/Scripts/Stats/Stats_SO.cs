@@ -7,10 +7,10 @@ using UnityEngine;
 public class Stats_SO : ScriptableObject //TODO make inheritance for different object types
 {
     [SerializeField] Sprite portrait;
-    [SerializeField] int maxHealth;
-    [SerializeField] int health;
+    public int maxHealth;
+    public int currentHealth;
 
-    [SerializeField] int damage;
+    [SerializeField] int baseDamage;
     [SerializeField] int currentLevel = 0;
 
     public LevelUp[] levelUps;
@@ -19,7 +19,7 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
     public class LevelUp
     {
         public int maxHealth;
-        public int damage;
+        public int baseDamage;
     }
 
     public Sprite GetPortrait()
@@ -28,32 +28,32 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
     }
     public void ApplyHealth(int healthAmount)
     {
-        health += healthAmount;
-        if (health > maxHealth)
+        currentHealth += healthAmount;
+        if (currentHealth > maxHealth)
         {
-            health = maxHealth;
+            currentHealth = maxHealth;
         }
     }
 
     public int GetHealth()
     {
-        return health;
+        return currentHealth;
     }
 
     public int GetDamage()
     {
-        return damage;
+        return baseDamage;
     }
 
     public bool TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
+        currentHealth -= damageAmount;
 
-        if(health <= 0)
+        if(currentHealth <= 0)
         {
-            health = 0;
+            currentHealth = 0;
         }
-        return health == 0;
+        return currentHealth == 0;
     }
 
     private void HandleDeath()
@@ -66,6 +66,14 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
         currentLevel += 1;
 
         maxHealth += levelUps[currentLevel - 1].maxHealth;
-        damage += levelUps[currentLevel - 1].damage;
+        baseDamage += levelUps[currentLevel - 1].baseDamage;
+    }
+
+    public void SetLevel(int level)
+    {
+        while(currentLevel < level - 1)
+        {
+            HandleLevelUp();
+        }
     }
 }
