@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave 3
   m_EditorClassIdentifier: 
   waveSize: 7
-  enemyLevel: 1
+  enemyLevel: 2
   moneyReward: 500
-  waveDuration: 0
-  delayBeforeWave: 0
+  waveDuration: 60
+  delayBeforeWave: 30

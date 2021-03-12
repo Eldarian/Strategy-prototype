@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,22 +7,34 @@ using UnityEngine.UI;
 public class UIController : SingletonBehaviour<UIController>
 {
     SelectionService selectionService;
+    MoneyManager moneyManager;
     public GameObject properties; //TODO make more clear
     public GameObject bigPortrait;
+    
 
     Text health;
     Text strength;
+    Text level;
+    Text money;
     Button takeUnit;
     Button buildWarBarracks;
     Button buildRangerBarracks;
     Button buildFountain;
 
-    private void Start()
+    private void Awake()
     {
         selectionService = GetComponent<SelectionService>();
+        moneyManager = GetComponent<MoneyManager>();
+    }
 
+    private void Start()
+    {
+        
         health = properties.transform.Find("Health Label").GetComponent<Text>();
         strength = properties.transform.Find("Strength Label").GetComponent<Text>();
+        level = properties.transform.Find("Level Label").GetComponent<Text>();
+        money = GameObject.Find("Money Label").GetComponent<Text>();
+
         buildWarBarracks = properties.transform.Find("WarBarracks Button").GetComponent<Button>();
         buildRangerBarracks = properties.transform.Find("RangerBarracks Button").GetComponent<Button>();
         buildFountain = properties.transform.Find("Fountain Button").GetComponent<Button>();
@@ -30,6 +43,7 @@ public class UIController : SingletonBehaviour<UIController>
 
     private void Update()
     {
+        DrawMoney();
         var selected = selectionService.GetSelected();
         if (selected.Count > 0)
         {
@@ -42,11 +56,18 @@ public class UIController : SingletonBehaviour<UIController>
             OnDeselect();
         }
     }
+
+    private void DrawMoney()
+    {
+        money.text = "Money: " + moneyManager.GetWealth();
+    }
+
     public void DrawMainObjectProperties(ISelectable selectable)
     {
         DrawPortrait(selectable);
         DrawHealth(selectable);
         DrawStrength(selectable);
+        DrawLevel(selectable);
 
         //Enable buttons in dependence of object type
         if(typeof(Fortress).IsInstanceOfType(selectable))
@@ -69,6 +90,11 @@ public class UIController : SingletonBehaviour<UIController>
         {
             takeUnit.gameObject.SetActive(false);
         }
+    }
+
+    private void DrawLevel(ISelectable selectable)
+    {
+        level.text = "Level: " + selectable.GetStats().GetLevel();
     }
 
     private void DrawStrength(ISelectable selectable)

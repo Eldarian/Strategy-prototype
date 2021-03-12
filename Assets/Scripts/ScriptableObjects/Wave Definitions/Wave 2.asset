@@ -15,5 +15,5 @@ MonoBehaviour:
   waveSize: 5
   enemyLevel: 1
   moneyReward: 300
-  waveDuration: 0
-  delayBeforeWave: 0
+  waveDuration: 60
+  delayBeforeWave: 20

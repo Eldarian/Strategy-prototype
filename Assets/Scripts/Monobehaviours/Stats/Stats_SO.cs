@@ -6,6 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Stats", menuName = "Stats", order = 55)]
 public class Stats_SO : ScriptableObject //TODO make inheritance for different object types
 {
+    [System.Serializable]
+    public class LevelUp
+    {
+        public int maxHealth;
+        public int baseDamage;
+    }
+
     [SerializeField] Sprite portrait;
     public int maxHealth;
     public int currentHealth;
@@ -14,13 +21,6 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
     [SerializeField] int currentLevel = 0;
 
     public LevelUp[] levelUps;
-
-    [System.Serializable]
-    public class LevelUp
-    {
-        public int maxHealth;
-        public int baseDamage;
-    }
 
     public Sprite GetPortrait()
     {
@@ -71,9 +71,14 @@ public class Stats_SO : ScriptableObject //TODO make inheritance for different o
 
     public void SetLevel(int level)
     {
-        while(currentLevel < level - 1)
+        while(currentLevel < level)
         {
             HandleLevelUp();
         }
+    }
+
+    public int GetLevel()
+    {
+        return currentLevel + 1;
     }
 }

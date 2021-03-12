@@ -14,15 +14,17 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField] List<WaveDefinition_SO> waveDefinitions;
 
 
-    private void Start()
+    private void Awake()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
         waveSpawner = FindObjectOfType<WaveSpawner>();
-        moneyManager.AddMoney(initialWealth);
-        StartCoroutine(GameLoop());
-        
     }
 
+    private void Start()
+    {
+        moneyManager.AddMoney(initialWealth);
+        StartCoroutine(GameLoop());
+    }
     int GetCurrentWaveNumber()
     {
         return currentWaveNumber;
@@ -88,7 +90,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         for (int i = 0; i < waveDefinitions.Count; i++)
         {
             yield return new WaitForSeconds(waveDefinitions[i].delayBeforeWave);
-            waveSpawner.CallWave(i, waveDefinitions[i].waveSize, waveDefinitions[i].enemyLevel);
+            waveSpawner.CallWave(i+1, waveDefinitions[i].waveSize, waveDefinitions[i].enemyLevel);
             yield return new WaitForSeconds(waveDefinitions[i].waveDuration);
         }
     }

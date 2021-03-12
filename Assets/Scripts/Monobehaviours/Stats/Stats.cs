@@ -56,6 +56,12 @@ public class Stats : MonoBehaviour
 
     public void SetLevel(int level)
     {
+        print("setting level " + level);
         stats_SO.SetLevel(level);
+    }
+
+    public int GetLevel()
+    {
+        return stats_SO.GetLevel();
     }
 }

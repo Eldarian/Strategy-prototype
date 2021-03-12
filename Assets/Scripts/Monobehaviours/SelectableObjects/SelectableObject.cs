@@ -10,10 +10,15 @@ public class SelectableObject : MonoBehaviour, ISelectable
     protected Stats stats;
 
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Awake()
     {
         selectionService = FindObjectOfType<SelectionService>();
-        stats = GetComponent<Stats>();
+        stats = gameObject.GetComponent<Stats>();
+    }
+
+    public virtual void Start()
+    {
+
     }
 
     // Update is called once per frame
